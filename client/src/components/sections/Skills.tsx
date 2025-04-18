@@ -35,8 +35,8 @@ const Skills = () => {
         "PostgreSQL",
         "MSSQL"
       ],
-      color: "text-accent",
-      hoverShadow: "hover:shadow-accent/10"
+      color: "text-yellow-500",
+      hoverShadow: "hover:shadow-yellow-500/10"
     },
     {
       icon: <FaTools />,
