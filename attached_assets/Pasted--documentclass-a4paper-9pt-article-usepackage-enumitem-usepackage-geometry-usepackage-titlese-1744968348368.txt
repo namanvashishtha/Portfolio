@@ -1,0 +1,116 @@
+\documentclass[a4paper,9pt]{article}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+
+\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+
+% Formatting sections and subsections
+\titleformat{\section}{\small\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+
+% Reduce space between sections
+\titlespacing*{\section}{0pt}{1.125pt}{1.125pt}
+\titlespacing*{\subsection}{0pt}{0.5ex}{0.5ex}
+
+% No indentation
+\setlength{\parindent}{0pt}
+
+% Reduce space between items in lists
+\setlist{noitemsep, nolistsep}
+
+% Hyperlink formatting
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Naman Vashishtha}}\\
+    +91 8448362072 | Faridabad, India | \href{mailto:namanvashi@gmail.com}{namanvashi@gmail.com} |
+    \href{https://www.linkedin.com/in/naman-vashishtha-974b011a1}{LinkedIn} | \href{https://github.com/namanvashishtha}{GitHub}
+\end{center}
+
+\vspace{8pt}
+\section*{Summary}
+\vspace{4pt}
+Software engineer with expertise in Java, Python, AI-ML, and JavaScript. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions. Skilled in collaboration, problem-solving, and technical documentation.
+
+\vspace{6pt}
+\section*{Education}
+\textbf{Bharati Vidyapeeth College of Engineering, New Delhi} \hfill B.Tech (EEE), 8.8 CGPA \hfill (July 2019 - June 2023)
+
+\vspace{6pt}
+\section*{Technical Skills}
+\begin{tabbing}
+\textbf{Backend:} \hspace{5cm} \= Java (JSON, REST API, Servlets), Python, AI-ML, LoRaWAN \\
+\textbf{Frontend:} \> JavaScript, HTML 5, CSS, React.js, Redux.js\\
+\textbf{Database:} \> PostgreSQL, MSSQL\\
+\textbf{Tools:} \> Git, GitHub, SVN, VS Code, Eclipse, IntelliJ, Postman \\
+\end{tabbing}
+
+\vspace{4pt}
+\section*{Experience}
+
+\textbf{Software Engineer - Zenner Connect, Germany} \\
+April 2025 – Present
+\begin{itemize}[leftmargin=1.5cm]
+    \item Spearheading development of scalable web applications from scratch using Python and React.js, enabling real-time data interaction and analytics.
+    \item Architected RESTful APIs in Python and integrated with dynamic React frontends, enhancing responsiveness and user experience.
+    \item Collaborating closely with cross-functional teams to define user requirements and deliver robust, end-to-end solutions.
+\end{itemize}
+
+\textbf{Software Engineer - inMorphis Services} \\
+December 2024 – March 2024
+\begin{itemize}[leftmargin=1.5cm]
+    \item Developed scalable applications using JavaScript, enhancing process efficiency by 30\%.
+    \item Designed and optimized BPM workflows, reducing processing time by 25\%.
+    \item Automated business tasks, cutting manual effort by 40\% and boosting accuracy.
+    \item Integrated REST and SOAP APIs to improve system interoperability by 35\%.
+    \item Used ServiceNow for server/client scripting and Flow Designer to optimize complex workflows by 30\%.
+\end{itemize}
+
+\textbf{Software Engineer - Newgen Software} \\
+January 2023 – December 2024
+\begin{itemize}[leftmargin=1.5cm]
+    \item Led development of an Invoice Management System using Java and SQL, reducing manual workload by 80\% and increasing client satisfaction by 70\%.
+    \item Automated DuckCreek Portal processes using Java and JavaScript, boosting claim settlement efficiency by 60\%.
+    \item Integrated over 50 APIs for folder creation, data population, and cabinet connectivity.
+    \item Built applications from scratch and delivered client presentations that increased satisfaction scores by 25\%.
+\end{itemize}
+
+
+
+\vspace{4pt}
+\section*{Projects}
+
+\textbf{IDP Accelerator (Newgen)} — Full-Stack Development \\
+\textbf{Tech Stack:} Java, JSON, REST API, MSSQL, CSS, JavaScript
+\begin{itemize}[leftmargin=1.5cm]
+    \item Built frontend in React.js (500+ form enhancements); backend in Java (20+ JSON extractions, servlets, APIs).
+    \item Managed 15+ SQL tables; implemented robust OCR zone-based extraction increasing accuracy by 85\%.
+    \item Resolved 1000+ bugs; optimized code via Sonarqube and Acunetix, reducing vulnerabilities significantly.
+\end{itemize}
+
+\textbf{Wind Power Forecasting} — ML-Based Energy Prediction System \\
+\textbf{Tech Stack:} Python, PostgreSQL, CSS, HTML, JavaScript, React.js, Machine Learning
+\begin{itemize}[leftmargin=1.5cm]
+    \item Built predictive UI with 70\% accuracy; used 17,000+ row SCADA dataset for model training.
+    \item Applied regression/classification models and feature engineering for optimal performance.
+    \item Published a research paper based on findings and implementation.
+\end{itemize}
+
+\textbf{FNOL Accelerator (Newgen) - Frontend and Backend Development} \\
+\textbf{Tech Stack:} Java, JSON handling, REST API, CSS, JavaScript, XML Handling
+\begin{itemize}[leftmargin=1.5cm]
+    \item Architected a portal for auto-populating customer policy details and generating claim numbers.
+    \item Worked on NewgenOne to automate business rules and process flow.
+    \item Consumed over 25 REST APIs and performed complex JSON parsing to extract and display user details on the frontend.
+    \item Leveraged Newgen APIs to generate XML payloads and implemented REST API for claim number generation.
+\end{itemize}
+
+\end{document}
