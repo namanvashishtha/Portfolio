@@ -69,6 +69,7 @@ const Hero = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-light-text hover:text-primary transition-colors"
+                aria-label="LinkedIn Profile"
               >
                 <FaLinkedin className="text-2xl" />
               </a>
