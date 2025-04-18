@@ -11,6 +11,7 @@ import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import ParticleBackground from "./ParticleBackground";
 import TechStackBanner from "./TechStackBanner";
+import ThemeToggle from "./ThemeToggle";
 import { useActiveSection } from "../hooks/useActiveSection";
 
 const Layout = () => {

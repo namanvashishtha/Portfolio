@@ -1,8 +1,36 @@
-import { FaEnvelope, FaFolderOpen, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaFolderOpen, FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import profilePhoto from "../../assets/profile-photo.jpg";
 
 const Hero = () => {
+  const [clickCount, setClickCount] = useState(0);
+  const [isRotating, setIsRotating] = useState(false);
+  
+  const handleImageClick = () => {
+    setClickCount(prev => prev + 1);
+    setIsRotating(true);
+    
+    // Easter egg messages after certain clicks
+    if (clickCount === 4) {
+      alert("Hey! You found an easter egg! Keep clicking for more fun!");
+    } else if (clickCount === 9) {
+      alert("You're persistent! I like that! 😊");
+    } else if (clickCount === 14) {
+      alert("OK, you win! Secret mode activated! 🎉");
+      document.body.classList.add("disco-mode");
+      
+      // Remove disco mode after 5 seconds
+      setTimeout(() => {
+        document.body.classList.remove("disco-mode");
+      }, 5000);
+    }
+    
+    // Reset rotation after animation completes
+    setTimeout(() => {
+      setIsRotating(false);
+    }, 500);
+  };
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16">
       <div className="container max-w-6xl">
@@ -14,16 +42,20 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="relative group max-w-xs mx-auto md:mx-0">
-              <div className="overflow-hidden rounded-full border-2 border-primary shadow-lg shadow-primary/20 z-10 relative transition-all duration-300 transform group-hover:scale-105">
+              <div 
+                className="overflow-hidden rounded-full border-2 border-primary shadow-lg shadow-primary/20 z-10 relative transition-all duration-300 transform group-hover:scale-105 cursor-pointer"
+                onClick={handleImageClick}
+              >
                 <div className="aspect-square w-full bg-gradient-to-br from-primary/20 to-background relative overflow-hidden">
                   <img
                     src={profilePhoto}
                     alt="Naman Vashishtha"
-                    className="w-full h-full object-cover object-center transition-all duration-300 group-hover:scale-110"
+                    className={`w-full h-full object-cover object-center transition-all duration-300 group-hover:scale-110 ${isRotating ? 'animate-spin-once' : ''}`}
                     style={{ 
                       clipPath: "circle(50% at center)",
                       mixBlendMode: "normal"
                     }}
+                    title="Click me for a surprise!"
                   />
                 </div>
               </div>
@@ -48,7 +80,7 @@ const Hero = () => {
             <p className="text-light-text text-lg md:text-xl max-w-xl my-6">
               Software engineer with expertise in Java, Python, AI-ML, and JavaScript. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions.
             </p>
-            <div className="flex gap-4 mt-8">
+            <div className="flex flex-wrap gap-4 mt-8">
               <a 
                 href="#contact" 
                 className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2"
@@ -62,6 +94,17 @@ const Hero = () => {
               >
                 <FaFolderOpen />
                 Projects
+              </a>
+              <a 
+                href="/resume.pdf" 
+                download="Naman_Vashishtha_Resume.pdf"
+                className="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2 group"
+              >
+                <FaDownload className="animate-download" />
+                <span className="relative">
+                  Download CV
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </span>
               </a>
             </div>
             <div className="flex gap-4 mt-8">
