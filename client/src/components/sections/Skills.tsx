@@ -43,8 +43,8 @@ const Skills = () => {
       title: "Tools",
       skills: [
         "Git, GitHub, SVN",
-        "VS Code, Eclipse, IntelliJ",
-        "Postman"
+        "VS Code, Eclipse, IntelliJ, PyCharm",
+        "Postman, ChirpStack"
       ],
       color: "text-primary",
       hoverShadow: "hover:shadow-primary/10"

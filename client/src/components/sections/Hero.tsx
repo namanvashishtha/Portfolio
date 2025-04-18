@@ -1,5 +1,6 @@
 import { FaEnvelope, FaFolderOpen, FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
+import profilePhoto from "../../assets/profile-photo.jpg";
 
 const Hero = () => {
   return (
@@ -14,8 +15,8 @@ const Hero = () => {
           >
             <div className="rounded-lg overflow-hidden border-2 border-primary shadow-lg shadow-primary/20 max-w-xs mx-auto md:mx-0">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt="Profile"
+                src={profilePhoto}
+                alt="Naman Vashishtha"
                 className="w-full h-auto"
               />
             </div>
