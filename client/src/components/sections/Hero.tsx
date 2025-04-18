@@ -13,12 +13,21 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="rounded-lg overflow-hidden border-2 border-primary shadow-lg shadow-primary/20 max-w-xs mx-auto md:mx-0">
-              <img
-                src={profilePhoto}
-                alt="Naman Vashishtha"
-                className="w-full h-auto"
-              />
+            <div className="relative group max-w-xs mx-auto md:mx-0">
+              <div className="overflow-hidden rounded-full border-2 border-primary shadow-lg shadow-primary/20 z-10 relative transition-all duration-300 transform group-hover:scale-105">
+                <div className="aspect-square w-full bg-gradient-to-br from-primary/20 to-background relative overflow-hidden">
+                  <img
+                    src={profilePhoto}
+                    alt="Naman Vashishtha"
+                    className="w-full h-full object-cover object-center transition-all duration-300 group-hover:scale-110"
+                    style={{ 
+                      clipPath: "circle(50% at center)",
+                      mixBlendMode: "normal"
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
             </div>
           </motion.div>
           <motion.div 
