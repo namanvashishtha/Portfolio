@@ -8,7 +8,8 @@ import {
   FaFolderOpen, 
   FaEnvelope, 
   FaGithub, 
-  FaLinkedin 
+  FaLinkedin,
+  FaBlog
 } from "react-icons/fa";
 
 interface SidebarProps {
@@ -23,6 +24,7 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
     { id: "experience", icon: <FaBriefcase className="text-xl" /> },
     { id: "education", icon: <FaGraduationCap className="text-xl" /> },
     { id: "projects", icon: <FaFolderOpen className="text-xl" /> },
+    { id: "blog", icon: <FaBlog className="text-xl" /> },
     { id: "contact", icon: <FaEnvelope className="text-xl" /> },
   ];
 

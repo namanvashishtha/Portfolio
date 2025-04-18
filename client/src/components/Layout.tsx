@@ -7,6 +7,7 @@ import Skills from "./sections/Skills";
 import Experience from "./sections/Experience";
 import Education from "./sections/Education";
 import Projects from "./sections/Projects";
+import Blog from "./sections/Blog";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import ParticleBackground from "./ParticleBackground";
@@ -39,6 +40,7 @@ const Layout = () => {
         <Sidebar activeSection={activeSection} />
         <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} activeSection={activeSection} />
         <TechStackBanner />
+        <ThemeToggle />
         
         <main className="flex-grow pt-16 md:pt-0 md:pl-20 lg:pl-24">
           <Hero />
@@ -47,6 +49,7 @@ const Layout = () => {
           <Experience />
           <Education />
           <Projects />
+          <Blog />
           <Contact />
           <Footer />
         </main>
