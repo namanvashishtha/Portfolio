@@ -99,6 +99,16 @@ const Hero = () => {
                 href="/resume.pdf" 
                 download="Naman_Vashishtha_Resume.pdf"
                 className="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2 group"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // Create an anchor element and set attributes for download
+                  const link = document.createElement('a');
+                  link.href = '/resume.pdf';
+                  link.download = 'Naman_Vashishtha_Resume.pdf';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
               >
                 <FaDownload className="animate-download" />
                 <span className="relative">

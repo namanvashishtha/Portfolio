@@ -25,7 +25,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, toggleMenu, activeSection }) 
         <span className="text-xl font-bold text-primary">NV</span>
         <button 
           onClick={toggleMenu} 
-          className="text-white focus:outline-none"
+          className="text-white bg-primary/20 p-2 rounded focus:outline-none hover:bg-primary/30 transition-all"
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
           {isOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}

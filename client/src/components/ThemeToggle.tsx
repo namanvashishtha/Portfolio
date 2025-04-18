@@ -15,10 +15,11 @@ const ThemeToggle = () => {
   }, []);
   
   const toggleTheme = () => {
+    const currentIcon = isDark ? 'sun' : 'moon';
     const newIsDark = !isDark;
     setIsDark(newIsDark);
     
-    if (newIsDark) {
+    if (currentIcon === 'sun') {
       // When clicking the Sun button, switch to Dark mode (black background, white text)
       document.documentElement.classList.remove('light');
       localStorage.setItem('portfolio-theme', 'dark');
@@ -39,6 +40,7 @@ const ThemeToggle = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Click Sun for Dark Mode" : "Click Moon for Light Mode"}
     >
       {isDark ? (
         <FaSun className="text-yellow-500 text-xl" />
