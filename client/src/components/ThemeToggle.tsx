@@ -15,13 +15,17 @@ const ThemeToggle = () => {
   }, []);
   
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    if (isDark) {
-      document.documentElement.classList.add('light');
-      localStorage.setItem('portfolio-theme', 'light');
-    } else {
+    const newIsDark = !isDark;
+    setIsDark(newIsDark);
+    
+    if (newIsDark) {
+      // When clicking the Sun button, switch to Dark mode (black background, white text)
       document.documentElement.classList.remove('light');
       localStorage.setItem('portfolio-theme', 'dark');
+    } else {
+      // When clicking the Moon button, switch to Light mode (white background, black text)
+      document.documentElement.classList.add('light');
+      localStorage.setItem('portfolio-theme', 'light');
     }
   };
   

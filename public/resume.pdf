@@ -1,0 +1,55 @@
+                                           Naman Vashishtha
+                   +91 8448362072 — Faridabad, India — namanvashi@gmail.com — LinkedIn — GitHub
+
+Summary
+Software engineer with expertise in Java, Python, AI-ML, and JavaScript. Adept at managing end-to-end SDLC processes
+and delivering efficient, scalable solutions. Skilled in collaboration, problem-solving, and technical documentation.
+Education
+Bharati Vidyapeeth College of Engineering, New Delhi                B.Tech (EEE), 8.8 CGPA         (July 2019 - June 2023)
+Technical Skills
+Backend:                                    Java (JSON, REST API, Servlets), Python, AI-ML, LoRaWAN
+Frontend:                                   JavaScript, HTML 5, CSS, React.js, Redux.js
+Database:                                   PostgreSQL, MSSQL
+Tools:                                      Git, GitHub, SVN, VS Code, Eclipse, IntelliJ, Postman
+
+Experience
+Software Engineer - Zenner Connect, Germany
+April 2025 – Present
+       • Spearheading development of scalable web applications from scratch using Python and React.js, enabling real-time
+         data interaction and analytics.
+       • Architected RESTful APIs in Python and integrated with dynamic React frontends, enhancing responsiveness and
+         user experience.
+       • Collaborating closely with cross-functional teams to define user requirements and deliver robust, end-to-end solu-
+         tions.
+Software Engineer - inMorphis Services
+December 2024 – March 2024
+       • Developed scalable applications using JavaScript, enhancing process efficiency by 30%.
+       • Designed and optimized BPM workflows, reducing processing time by 25%.
+       • Automated business tasks, cutting manual effort by 40% and boosting accuracy.
+       • Integrated REST and SOAP APIs to improve system interoperability by 35%.
+       • Used ServiceNow for server/client scripting and Flow Designer to optimize complex workflows by 30%.
+Software Engineer - Newgen Software
+January 2023 – December 2024
+       • Led development of an Invoice Management System using Java and SQL, reducing manual workload by 80% and
+         increasing client satisfaction by 70%.
+       • Automated DuckCreek Portal processes using Java and JavaScript, boosting claim settlement efficiency by 60%.
+       • Integrated over 50 APIs for folder creation, data population, and cabinet connectivity.
+       • Built applications from scratch and delivered client presentations that increased satisfaction scores by 25%.
+Projects
+IDP Accelerator (Newgen) — Full-Stack Development
+Tech Stack: Java, JSON, REST API, MSSQL, CSS, JavaScript
+       • Built frontend in React.js (500+ form enhancements); backend in Java (20+ JSON extractions, servlets, APIs).
+       • Managed 15+ SQL tables; implemented robust OCR zone-based extraction increasing accuracy by 85%.
+       • Resolved 1000+ bugs; optimized code via Sonarqube and Acunetix, reducing vulnerabilities significantly.
+Wind Power Forecasting — ML-Based Energy Prediction System
+Tech Stack: Python, PostgreSQL, CSS, HTML, JavaScript, React.js, Machine Learning
+       • Built predictive UI with 70% accuracy; used 17,000+ row SCADA dataset for model training.
+       • Applied regression/classification models and feature engineering for optimal performance.
+       • Published a research paper based on findings and implementation.
+FNOL Accelerator (Newgen) - Frontend and Backend Development
+Tech Stack: Java, JSON handling, REST API, CSS, JavaScript, XML Handling
+       • Architected a portal for auto-populating customer policy details and generating claim numbers.
+       • Worked on NewgenOne to automate business rules and process flow.
+       • Consumed over 25 REST APIs and performed complex JSON parsing to extract and display user details on the
+         frontend.
+       • Leveraged Newgen APIs to generate XML payloads and implemented REST API for claim number generation.
