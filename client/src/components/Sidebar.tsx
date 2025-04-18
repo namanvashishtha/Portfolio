@@ -29,9 +29,15 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
   return (
     <aside className="md:w-20 lg:w-24 dark-card fixed md:relative z-50 transition-all duration-300 top-0 left-0 h-screen md:min-h-screen hidden md:flex flex-col items-center justify-between py-8">
       <div className="flex flex-col items-center">
-        <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-10">
+        <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-6">
           NV
         </div>
+        
+        <div className="text-xs text-center mb-6 text-white font-medium px-2 whitespace-normal">
+          <span className="rotate-90 block">Click here for quick access to any section</span>
+        </div>
+        
+        <div className="h-px w-8 bg-muted mb-6"></div>
         
         <nav>
           <ul className="flex flex-col gap-8 items-center">

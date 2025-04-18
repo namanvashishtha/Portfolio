@@ -9,6 +9,7 @@ import Education from "./sections/Education";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
+import ParticleBackground from "./ParticleBackground";
 import { useActiveSection } from "../hooks/useActiveSection";
 
 const Layout = () => {
@@ -25,20 +26,28 @@ const Layout = () => {
   }, [activeSection]);
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
-      <Sidebar activeSection={activeSection} />
-      <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} activeSection={activeSection} />
+    <div className="min-h-screen flex flex-col md:flex-row relative overflow-hidden">
+      {/* Particle background */}
+      <div className="fixed inset-0 z-0">
+        <ParticleBackground />
+      </div>
       
-      <main className="flex-grow pt-16 md:pt-0 md:pl-20 lg:pl-24">
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Education />
-        <Projects />
-        <Contact />
-        <Footer />
-      </main>
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex flex-col md:flex-row w-full">
+        <Sidebar activeSection={activeSection} />
+        <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} activeSection={activeSection} />
+        
+        <main className="flex-grow pt-16 md:pt-0 md:pl-20 lg:pl-24">
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Education />
+          <Projects />
+          <Contact />
+          <Footer />
+        </main>
+      </div>
     </div>
   );
 };

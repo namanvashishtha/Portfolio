@@ -61,10 +61,15 @@
 
 @layer utilities {
   .dark-section {
-    @apply bg-[#121212];
+    @apply bg-[#121212]/80 backdrop-blur-sm;
   }
   
   .dark-card {
-    @apply bg-[#1E1E1E];
+    @apply bg-[#1E1E1E]/80 backdrop-blur-sm;
+  }
+  
+  /* For particle background */
+  .tsparticles-canvas-el {
+    pointer-events: auto !important;
   }
 }
