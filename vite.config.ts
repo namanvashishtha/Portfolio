@@ -35,6 +35,14 @@ export default defineConfig(async () => {
     build: {
       outDir: path.resolve(__dirname, "client/dist"),
       emptyOutDir: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ["react", "react-dom"],
+          },
+        },
+      },
+      chunkSizeWarningLimit: 1000, // Increase chunk size warning limit to 1000 kB
     },
   };
 });
