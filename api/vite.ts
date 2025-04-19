@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 const viteLogger = createLogger();
 
-export function log(message, source = "express") {
+export function log(message: string, source: string = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
@@ -23,13 +23,13 @@ export function log(message, source = "express") {
   console.log(`${formattedTime} [${source}] ${message}`);
 }
 
-export async function setupVite(app, server) {
+export async function setupVite(app: express.Application, server: any) {
   const vite = await createViteServer({
     ...viteConfig,
     configFile: false,
     customLogger: {
       ...viteLogger,
-      error: (msg, options) => {
+      error: (msg: string, options?: any) => {
         viteLogger.error(msg, options);
         process.exit(1);
       },
@@ -43,7 +43,7 @@ export async function setupVite(app, server) {
 
   app.use(vite.middlewares);
 
-  app.use("*", async (req, res, next) => {
+  app.use("*", async (req: Request, res: Response, next: NextFunction) => {
     const url = req.originalUrl;
 
     try {
@@ -58,13 +58,13 @@ export async function setupVite(app, server) {
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
-      vite.ssrFixStacktrace(e);
+      vite.ssrFixStacktrace(e as Error);
       next(e);
     }
   });
 }
 
-export function serveStatic(app) {
+export function serveStatic(app: express.Application) {
   const distPath = path.resolve(__dirname, "../../client/dist");
 
   if (!fs.existsSync(distPath)) {
@@ -76,7 +76,7 @@ export function serveStatic(app) {
   app.use(express.static(distPath));
 
   // SPA fallback
-  app.use("*", (_req, res) => {
+  app.use("*", (_req: Request, res: Response) => {
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }
