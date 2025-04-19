@@ -23,8 +23,8 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Validate form
+
+    // Validate required fields
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Missing Fields",
@@ -33,7 +33,7 @@ const Contact = () => {
       });
       return;
     }
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
@@ -44,26 +44,34 @@ const Contact = () => {
       });
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     try {
-      // In a real app, we would send this data to an API endpoint
-      // For now, just simulate the API call with a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. I'll get back to you soon!",
+      const response = await fetch("https://formspree.io/f/xzzelynb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thanks for reaching out. I'll get back to you soon!",
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Form submission failed");
+      }
     } catch (error) {
       toast({
         title: "Error",
@@ -78,7 +86,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 px-6 md:px-12 lg:px-16">
       <div className="container max-w-6xl mx-auto">
-        <motion.div 
+        <motion.div
           className="mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +104,8 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
           >
             <p className="text-light-text mb-8">
-              I'm interested in freelance opportunities – especially ambitious or large projects. However, if you have other requests or questions, don't hesitate to use the form.
+              I'm open to freelance opportunities – especially ambitious or large projects.
+              However, if you have other requests or questions, don't hesitate to use the form.
             </p>
             <div className="space-y-5">
               <div className="flex items-start gap-5">
@@ -115,8 +124,8 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold mb-1">Email</h3>
                   <p className="text-light-text">
-                    <a 
-                      href="mailto:namanvashi@gmail.com" 
+                    <a
+                      href="mailto:namanvashi@gmail.com"
                       className="hover:text-primary transition-colors"
                     >
                       namanvashi@gmail.com
@@ -144,64 +153,82 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Name" 
+                    placeholder="Name"
                     className="w-full dark-card rounded-lg border border-gray-700 p-4 text-white focus:outline-none focus:border-primary transition-colors"
                     required
                   />
                 </div>
                 <div>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Email" 
+                    placeholder="Email"
                     className="w-full dark-card rounded-lg border border-gray-700 p-4 text-white focus:outline-none focus:border-primary transition-colors"
                     required
                   />
                 </div>
               </div>
               <div>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Subject" 
+                  placeholder="Subject"
                   className="w-full dark-card rounded-lg border border-gray-700 p-4 text-white focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
               <div>
-                <textarea 
+                <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Message" 
-                  rows={5} 
+                  placeholder="Message"
+                  rows={5}
                   className="w-full dark-card rounded-lg border border-gray-700 p-4 text-white focus:outline-none focus:border-primary transition-colors resize-none"
                   required
                 ></textarea>
               </div>
               <div>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg font-medium transition-all flex items-center gap-2"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
                     <>
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      <svg
+                        className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
                       </svg>
                       Sending...
                     </>
-                  ) : "Send Message"}
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
               </div>
             </form>

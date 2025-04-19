@@ -18,41 +18,40 @@ interface SidebarProps {
 
 const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
   const navItems = [
-    { id: "home", icon: <FaHome className="text-xl" /> },
-    { id: "about", icon: <FaUser className="text-xl" /> },
-    { id: "skills", icon: <FaCode className="text-xl" /> },
-    { id: "experience", icon: <FaBriefcase className="text-xl" /> },
-    { id: "education", icon: <FaGraduationCap className="text-xl" /> },
-    { id: "projects", icon: <FaFolderOpen className="text-xl" /> },
-    { id: "blog", icon: <FaBlog className="text-xl" /> },
-    { id: "contact", icon: <FaEnvelope className="text-xl" /> },
+    { id: "home", icon: <FaHome />, label: "Home", color: "#4ade80" },
+    { id: "about", icon: <FaUser />, label: "About", color: "#60a5fa" },
+    { id: "skills", icon: <FaCode />, label: "Skills", color: "#facc15" },
+    { id: "experience", icon: <FaBriefcase />, label: "Experience", color: "#fb923c" },
+    { id: "education", icon: <FaGraduationCap />, label: "Education", color: "#a78bfa" },
+    { id: "projects", icon: <FaFolderOpen />, label: "Projects", color: "#34d399" },
+    { id: "blog", icon: <FaBlog />, label: "Blog", color: "#f472b6" },
+    { id: "contact", icon: <FaEnvelope />, label: "Contact", color: "#38bdf8" },
   ];
 
   return (
     <aside className="md:w-20 lg:w-24 dark-card fixed md:relative z-50 transition-all duration-300 top-0 left-0 h-screen md:min-h-screen hidden md:flex flex-col items-center justify-between py-8">
       <div className="flex flex-col items-center">
-        <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-6">
+        <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-6 text-lg">
           NV
         </div>
-        
-        <div className="text-xs text-center mb-6 text-white font-medium px-2 whitespace-normal">
-          <span className="rotate-90 block">Click here for quick access to any section</span>
-        </div>
-        
         <div className="h-px w-8 bg-muted mb-6"></div>
-        
+
         <nav>
-          <ul className="flex flex-col gap-8 items-center">
+          <ul className="flex flex-col gap-6 items-center">
             {navItems.map((item) => (
-              <li key={item.id} data-section={item.id}>
+              <li key={item.id} data-section={item.id} className="relative group">
                 <a 
                   href={`#${item.id}`} 
-                  className={`${
+                  className={`text-xl transition-colors ${
                     activeSection === item.id ? "text-primary" : "text-muted"
-                  } hover:text-white transition-colors`}
+                  }`}
+                  style={{ color: item.color }}
                 >
                   {item.icon}
                 </a>
+                <span className="absolute left-10 opacity-0 group-hover:opacity-100 bg-dark text-white text-xs font-medium px-2 py-1 rounded-md shadow-lg transition-opacity duration-300 whitespace-nowrap z-50">
+                  {item.label}
+                </span>
               </li>
             ))}
           </ul>
@@ -66,6 +65,7 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-muted hover:text-white transition-colors"
+              style={{ color: "#6e5494" }}
             >
               <FaGithub className="text-xl" />
             </a>
@@ -76,6 +76,7 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-muted hover:text-white transition-colors"
+              style={{ color: "#0e76a8" }}
             >
               <FaLinkedin className="text-xl" />
             </a>

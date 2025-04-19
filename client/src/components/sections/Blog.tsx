@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaCalendar, FaTag, FaUser } from "react-icons/fa";
 
@@ -12,6 +12,8 @@ interface BlogPost {
   category: string;
   image: string;
 }
+
+const LOCAL_STORAGE_KEY = "my_blog_posts";
 
 const defaultPosts: BlogPost[] = [
   {
@@ -37,7 +39,7 @@ const defaultPosts: BlogPost[] = [
 ];
 
 const Blog = () => {
-  const [posts, setPosts] = useState<BlogPost[]>(defaultPosts);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [activePost, setActivePost] = useState<BlogPost | null>(null);
   const [isWriting, setIsWriting] = useState(false);
   const [newPost, setNewPost] = useState<Partial<BlogPost>>({
@@ -49,13 +51,26 @@ const Blog = () => {
     date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
   });
 
+  useEffect(() => {
+    const storedPosts = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (storedPosts) {
+      setPosts(JSON.parse(storedPosts));
+    } else {
+      setPosts(defaultPosts);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(posts));
+  }, [posts]);
+
   const handleCreatePost = () => {
     const post: BlogPost = {
       ...newPost as BlogPost,
       id: posts.length + 1,
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80"
     };
-    
+
     setPosts([post, ...posts]);
     setNewPost({
       title: "",

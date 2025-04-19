@@ -7,8 +7,8 @@ interface ProjectCardProps {
   description: string;
   type: string;
   technologies: string[];
-  colorClass: string;
-  bgClass: string;
+  colorClass: string; // e.g., "text-primary"
+  bgClass: string;    // e.g., "bg-primary/10"
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -20,6 +20,26 @@ const ProjectCard: FC<ProjectCardProps> = ({
   colorClass,
   bgClass,
 }) => {
+  const getHoverColorClass = (color: string) => {
+    switch (color) {
+      case "text-primary":
+        return "group-hover:text-primary";
+      case "text-secondary":
+        return "group-hover:text-secondary";
+      case "text-accent":
+        return "group-hover:text-accent";
+      case "text-blue-500":
+        return "group-hover:text-blue-500";
+      case "text-green-500":
+        return "group-hover:text-green-500";
+      case "text-yellow-500":
+        return "group-hover:text-yellow-500";
+      // Add more mappings if needed
+      default:
+        return "";
+    }
+  };
+
   return (
     <motion.div 
       className={`dark-card rounded-lg overflow-hidden hover:shadow-lg ${bgClass} transition-all group`}
@@ -32,9 +52,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
       <div className={`h-48 ${bgClass} flex items-center justify-center`}>
         <div className={`text-5xl ${colorClass}`}>{icon}</div>
       </div>
+
       <div className="p-6">
-        <h3 className={`text-xl font-semibold mb-2 group-hover:${colorClass} transition-colors`}>{title}</h3>
+        <h3 
+          className={`text-xl font-semibold mb-2 transition-colors duration-300 ${getHoverColorClass(colorClass)}`}
+        >
+          {title}
+        </h3>
+
         <p className="text-muted mb-4">{type}</p>
+
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
             <span 
@@ -45,6 +72,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             </span>
           ))}
         </div>
+
         <p className="text-light-text text-sm">{description}</p>
       </div>
     </motion.div>

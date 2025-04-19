@@ -85,7 +85,7 @@ const About = () => {
               <ProgressBar 
                 skillName="Database Management" 
                 percentage={75} 
-                color="bg-primary"
+                color= "bg-yellow-500"
               />
             </div>
           </motion.div>

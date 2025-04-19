@@ -42,7 +42,9 @@ const Layout = () => {
         <TechStackBanner />
         <ThemeToggle />
         
-        <main className="flex-grow pt-16 md:pt-0 md:pl-20 lg:pl-24">
+        {/* <main className="flex-grow pt-16 md:pt-0 md:pl-20 lg:pl-24"> */}
+        <main className="flex-grow pt-16 px-4 md:px-8 lg:px-12 xl:px-20 text-left items-start">
+
           <Hero />
           <About />
           <Skills />

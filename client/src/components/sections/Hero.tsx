@@ -2,47 +2,54 @@ import { FaEnvelope, FaFolderOpen, FaGithub, FaLinkedin, FaDownload } from "reac
 import { motion } from "framer-motion";
 import { useState } from "react";
 import profilePhoto from "../../assets/profile-photo.jpg";
+import toast, { Toaster } from "react-hot-toast";
 
 const Hero = () => {
   const [clickCount, setClickCount] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
-  
+
   const handleImageClick = () => {
     setClickCount(prev => prev + 1);
     setIsRotating(true);
-    
-    // Easter egg messages after certain clicks
+
     if (clickCount === 4) {
-      alert("Hey! You found an easter egg! Keep clicking for more fun!");
+      toast("🎉 You found an easter egg! Keep clicking for more fun!");
     } else if (clickCount === 9) {
-      alert("You're persistent! I like that! 😊");
+      toast.success("🔥 You're persistent! I like that!");
     } else if (clickCount === 14) {
-      alert("OK, you win! Secret mode activated! 🎉");
+      toast("✨ Secret mode activated! Enjoy the disco! 🎉", {
+        icon: '🪩',
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
+
       document.body.classList.add("disco-mode");
-      
-      // Remove disco mode after 5 seconds
       setTimeout(() => {
         document.body.classList.remove("disco-mode");
-      }, 5000);
+      }, 10000);
     }
-    
-    // Reset rotation after animation completes
+
     setTimeout(() => {
       setIsRotating(false);
     }, 500);
   };
+
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16">
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="container max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-16">
-          <motion.div 
+          <motion.div
             className="md:w-1/3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <div className="relative group max-w-xs mx-auto md:mx-0">
-              <div 
+              <div
                 className="overflow-hidden rounded-full border-2 border-primary shadow-lg shadow-primary/20 z-10 relative transition-all duration-300 transform group-hover:scale-105 cursor-pointer"
                 onClick={handleImageClick}
               >
@@ -51,7 +58,7 @@ const Hero = () => {
                     src={profilePhoto}
                     alt="Naman Vashishtha"
                     className={`w-full h-full object-cover object-center transition-all duration-300 group-hover:scale-110 ${isRotating ? 'animate-spin-once' : ''}`}
-                    style={{ 
+                    style={{
                       clipPath: "circle(50% at center)",
                       mixBlendMode: "normal"
                     }}
@@ -62,7 +69,8 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
             </div>
           </motion.div>
-          <motion.div 
+
+          <motion.div
             className="md:w-2/3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,35 +88,28 @@ const Hero = () => {
             <p className="text-light-text text-lg md:text-xl max-w-xl my-6">
               Software engineer with expertise in Java, Python, AI-ML, and JavaScript. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions.
             </p>
+
             <div className="flex flex-wrap gap-4 mt-8">
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2"
               >
                 <FaEnvelope />
                 Contact Me
               </a>
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 className="border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2"
               >
                 <FaFolderOpen />
                 Projects
               </a>
-              <a 
-                href="/resume.pdf" 
+
+              {/* ✅ Updated Download Button */}
+              <a
+                href="/resume.pdf"
                 download="Naman_Vashishtha_Resume.pdf"
                 className="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2 group"
-                onClick={(e) => {
-                  e.preventDefault();
-                  // Create an anchor element and set attributes for download
-                  const link = document.createElement('a');
-                  link.href = '/resume.pdf';
-                  link.download = 'Naman_Vashishtha_Resume.pdf';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
               >
                 <FaDownload className="animate-download" />
                 <span className="relative">
@@ -117,26 +118,27 @@ const Hero = () => {
                 </span>
               </a>
             </div>
+
             <div className="flex gap-4 mt-8">
-              <a 
-                href="https://github.com/namanvashishtha" 
-                target="_blank" 
+              <a
+                href="https://github.com/namanvashishtha"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-light-text hover:text-primary transition-colors"
               >
                 <FaGithub className="text-2xl" />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/naman-vashishtha-974b011a1" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/naman-vashishtha-974b011a1"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-light-text hover:text-primary transition-colors"
                 aria-label="LinkedIn Profile"
               >
                 <FaLinkedin className="text-2xl" />
               </a>
-              <a 
-                href="mailto:namanvashi@gmail.com" 
+              <a
+                href="mailto:namanvashi@gmail.com"
                 className="text-light-text hover:text-primary transition-colors"
               >
                 <FaEnvelope className="text-2xl" />
