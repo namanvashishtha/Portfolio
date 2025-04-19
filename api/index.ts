@@ -1,12 +1,13 @@
 // server/index.ts
 import express, { type Request, Response, NextFunction } from "express";
-
 import { setupVite, serveStatic, log } from "./vite";
-
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Add environment logging
+log(`NODE_ENV is "${process.env.NODE_ENV}"`, "env");
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -47,18 +48,23 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 });
 
 (async () => {
-  // Only setup vite in development
-  if (app.get("env") === "development") {
+  const isDev = process.env.NODE_ENV === "development";
+
+  if (isDev) {
     const { createServer } = await import("http");
     const server = createServer(app);
     await setupVite(app, server);
-    server.listen({ port: 5000, host: "127.0.0.1" }, () => {
-      log("serving on port 5000");
+
+    const port = 5000;
+    server.listen({ port, host: "127.0.0.1" }, () => {
+      log(`serving on port ${port}`);
     });
   } else {
+    const port = process.env.PORT || 5000; // allow dynamic port for Vercel or other hosts
     serveStatic(app);
-    app.listen(5000, () => {
-      log("serving on port 5000");
+
+    app.listen(port, () => {
+      log(`serving on port ${port}`);
     });
   }
 })();

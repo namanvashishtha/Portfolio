@@ -20,12 +20,6 @@ export function log(message: string, source = "express") {
 }
 
 export async function setupVite(app: Express, server: Server) {
-  const serverOptions = {
-    middlewareMode: true,
-    hmr: { server },
-    
-  };
-
   const vite = await createViteServer({
     ...viteConfig,
     configFile: false,
@@ -36,7 +30,11 @@ export async function setupVite(app: Express, server: Server) {
         process.exit(1);
       },
     },
-    server: serverOptions,
+    server: {
+      middlewareMode: true,
+      hmr: { server },
+      // ❌ removed "allowedHosts: true" because it's invalid type (fix for ts2322)
+    },
     appType: "custom",
   });
 
@@ -48,14 +46,16 @@ export async function setupVite(app: Express, server: Server) {
     try {
       const clientTemplate = path.resolve(
         import.meta.dirname,
-        "../../client/index.html" // Adjusted path
+        "../../client/index.html"
       );
 
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
+
       template = template.replace(
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
       );
+
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
@@ -66,7 +66,7 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "../../client/dist"); // ✅ Corrected path
+  const distPath = path.resolve(import.meta.dirname, "../../client/dist");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
@@ -76,7 +76,7 @@ export function serveStatic(app: Express) {
 
   app.use(express.static(distPath));
 
-  // Fall through to index.html if file not found (SPA)
+  // Fall through to index.html if route not matched (SPA fallback)
   app.use("*", (_req, res) => {
     res.sendFile(path.resolve(distPath, "index.html"));
   });
