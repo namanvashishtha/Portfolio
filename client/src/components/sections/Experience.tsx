@@ -19,7 +19,7 @@ const Experience = () => {
       position: "right",
       title: "Software Engineer",
       company: "inMorphis Services, Noida",
-      period: "December 2024 – March 2024",
+      period: "December 2024 – March 2025",
       details: [
         "Developed scalable applications using JavaScript, enhancing process efficiency by 30%.",
         "Designed and optimized BPM workflows, reducing processing time by 25%.",
