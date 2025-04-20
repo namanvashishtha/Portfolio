@@ -107,7 +107,7 @@ const Hero = () => {
 
               {/* ✅ Updated Download Button */}
               <a
-                href="/resume.pdf"
+                href="/Naman_Vashishtha_Resume.pdf"
                 download="Naman_Vashishtha_Resume.pdf"
                 className="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2 group"
               >
