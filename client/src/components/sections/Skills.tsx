@@ -8,10 +8,11 @@ const Skills = () => {
       icon: <FaCode />,
       title: "Backend",
       skills: [
-        "Java (JSON, REST API, Servlets)",
+        "Java ",
         "Python",
-        "AI-ML",
-        "LoRaWAN"
+        "Node.js",
+        "Express.js",
+        
       ],
       color: "text-primary",
       hoverShadow: "hover:shadow-primary/10"
@@ -21,9 +22,10 @@ const Skills = () => {
       title: "Frontend",
       skills: [
         "JavaScript",
-        "HTML 5",
+        "HTML ",
         "CSS",
-        "React.js, Redux.js"
+        "Tailwind CSS",
+        "React.js "
       ],
       color: "text-secondary",
       hoverShadow: "hover:shadow-secondary/10"
