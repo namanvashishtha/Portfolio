@@ -35,7 +35,8 @@ const Skills = () => {
       title: "Database",
       skills: [
         "PostgreSQL",
-        "MSSQL"
+        "MSSQL",
+        "MongoDB"
       ],
       color: "text-yellow-500",
       hoverShadow: "hover:shadow-yellow-500/10"
@@ -46,7 +47,7 @@ const Skills = () => {
       skills: [
         "Git, GitHub, SVN",
         "VS Code, Eclipse, IntelliJ, PyCharm",
-        "Postman, ChirpStack"
+        "Postman, Docker"
       ],
       color: "text-primary",
       hoverShadow: "hover:shadow-primary/10"
