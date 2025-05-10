@@ -16,6 +16,7 @@ const TechStackBanner = () => {
     { icon: <FaCss3 />, name: 'CSS', color: 'bg-blue-500' },
     { icon: <SiPostgresql />, name: 'PostgreSQL', color: 'bg-yellow-500' },
     { icon: <SiGit />, name: 'Git', color: 'bg-orange-600' },
+    { icon: <SiMongodb />, name: 'MongoDB', color: 'bg-green-600' },
   ];
 
   useEffect(() => {
