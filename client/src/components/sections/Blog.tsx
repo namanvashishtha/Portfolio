@@ -35,6 +35,16 @@ const defaultPosts: BlogPost[] = [
     author: "Naman Vashishtha",
     category: "Java",
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    id: 3,
+    title: "New Trends in Web Development: JAMstack and Beyond",
+    excerpt: "Exploring the JAMStack and its impact on modern web development.",
+    content: "JAMstack is revolutionizing modern web development by prioritizing speed, security, and scalability. This architecture—built on JavaScript, APIs, and Markup—decouples the frontend from the backend, enabling developers to create fast, static sites that dynamically pull data via APIs. With tools like Next.js and Gatsby, JAMstack simplifies workflows while leveraging CDNs for global performance. Beyond JAMstack, trends like serverless computing and AI-driven development are emerging, allowing for more efficient scaling and personalized user experiences. As web development evolves, embracing these innovations ensures developers can build robust, future-proof applications that meet growing user demands.",
+    date: "May 12, 2025",
+    author: "Naman Vashishtha",
+    category: "Web Development",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   }
 ];
 
