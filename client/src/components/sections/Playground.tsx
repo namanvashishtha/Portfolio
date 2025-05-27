@@ -16,7 +16,7 @@ const games: Game[] = [
     id: 1,
     title: "Snake Game",
     description: "A classic Snake game built with modern web technologies. Control the snake, eat the food, and try to achieve the highest score without hitting the walls or yourself!",
-    image: "https://images.unsplash.com/photo-1586325194227-7625ed95172b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    image: "/snake.jpg",
     url: "https://snake-game-naman-vashi.vercel.app/",
     technologies: ["HTML", "CSS", "JavaScript", "Canvas API"]
   }
