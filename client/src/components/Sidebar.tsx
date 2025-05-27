@@ -33,7 +33,7 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
   ];
 
   return (
-<aside className="md:w-28 lg:w-32 dark-card fixed md:relative z-50 transition-all duration-300 top-0 left-0 h-screen md:min-h-screen hidden md:flex flex-col items-center justify-between py-8">
+<aside className="md:w-32 lg:w-36 dark-card fixed md:relative z-50 transition-all duration-300 top-0 left-0 h-screen md:min-h-screen hidden md:flex flex-col items-center justify-between py-8 overflow-hidden">
       <div className="flex flex-col items-center">
         <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-6 text-lg">
           NV
@@ -62,7 +62,7 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
         </nav>
       </div>
       <div>
-        <ul className="flex flex-col gap-5 items-center">
+<ul className="flex flex-col gap-8 items-center">
           <li>
             <a 
               href="https://github.com/namanvashishtha" 
