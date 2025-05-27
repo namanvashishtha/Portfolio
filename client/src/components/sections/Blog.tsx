@@ -133,9 +133,13 @@ const Blog = () => {
         'https://api.rss2json.com/v1/api.json',
         {
           params: {
-            rss_url: 'https://medium.com/feed/@unclejiyo',
+            rss_url: 'https://medium.com/@unclejiyo/feed',
             api_key: 'ykxoqnpwmgn8gsjybfeilroqmvhlwsyrhsdwvjfk',
             count: 10
+          },
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
           }
         }
       );
@@ -181,6 +185,17 @@ const Blog = () => {
       }
     } catch (err) {
       console.error("Error fetching Medium posts:", err);
+      
+      // More detailed error logging
+      if (axios.isAxiosError(err)) {
+        console.error("Axios error details:", {
+          status: err.response?.status,
+          statusText: err.response?.statusText,
+          data: err.response?.data,
+          message: err.message
+        });
+      }
+      
       setError("Failed to load blog posts from Medium. Using fallback posts instead.");
       setPosts(fallbackPosts);
     } finally {
