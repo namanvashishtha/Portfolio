@@ -9,8 +9,11 @@ import {
   FaEnvelope, 
   FaGithub, 
   FaLinkedin,
-  FaBlog
+  FaBlog,
+  FaMedium,
+  FaGamepad
 } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 interface SidebarProps {
   activeSection: string;
@@ -24,6 +27,7 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
     { id: "experience", icon: <FaBriefcase />, label: "Experience", color: "#fb923c" },
     { id: "education", icon: <FaGraduationCap />, label: "Education", color: "#a78bfa" },
     { id: "projects", icon: <FaFolderOpen />, label: "Projects", color: "#34d399" },
+    { id: "playground", icon: <FaGamepad />, label: "Playground", color: "#ec4899" },
     { id: "blog", icon: <FaBlog />, label: "Blog", color: "#f472b6" },
     { id: "contact", icon: <FaEnvelope />, label: "Contact", color: "#38bdf8" },
   ];
@@ -66,6 +70,7 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
               rel="noopener noreferrer" 
               className="text-muted hover:text-white transition-colors"
               style={{ color: "#6e5494" }}
+              aria-label="GitHub Profile"
             >
               <FaGithub className="text-xl" />
             </a>
@@ -77,8 +82,33 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
               rel="noopener noreferrer" 
               className="text-muted hover:text-white transition-colors"
               style={{ color: "#0e76a8" }}
+              aria-label="LinkedIn Profile"
             >
               <FaLinkedin className="text-xl" />
+            </a>
+          </li>
+          <li>
+            <a 
+              href="https://medium.com/@unclejiyo" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-muted hover:text-white transition-colors"
+              style={{ color: "#00ab6c" }}
+              aria-label="Medium Profile"
+            >
+              <FaMedium className="text-xl" />
+            </a>
+          </li>
+          <li>
+            <a 
+              href="https://leetcode.com/u/unclejiyo" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-muted hover:text-white transition-colors"
+              style={{ color: "#FFA116" }}
+              aria-label="LeetCode Profile"
+            >
+              <SiLeetcode className="text-xl" />
             </a>
           </li>
         </ul>

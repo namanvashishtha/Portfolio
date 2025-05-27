@@ -1,4 +1,5 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaMedium } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -28,6 +29,24 @@ const Footer = () => {
               aria-label="LinkedIn"
             >
               <FaLinkedin className="text-xl" />
+            </a>
+            <a 
+              href="https://medium.com/@unclejiyo" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-muted hover:text-primary transition-colors"
+              aria-label="Medium"
+            >
+              <FaMedium className="text-xl" />
+            </a>
+            <a 
+              href="https://leetcode.com/u/unclejiyo" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-muted hover:text-primary transition-colors"
+              aria-label="LeetCode"
+            >
+              <SiLeetcode className="text-xl" />
             </a>
             <a 
               href="mailto:namanvashi@gmail.com" 

@@ -15,6 +15,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, toggleMenu, activeSection }) 
     { id: "experience", label: "Experience" },
     { id: "education", label: "Education" },
     { id: "projects", label: "Projects" },
+    { id: "playground", label: "Playground" },
     { id: "blog", label: "Blog" },
     { id: "contact", label: "Contact" },
   ];

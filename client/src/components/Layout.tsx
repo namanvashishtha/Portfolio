@@ -7,6 +7,7 @@ import Skills from "./sections/Skills";
 import Experience from "./sections/Experience";
 import Education from "./sections/Education";
 import Projects from "./sections/Projects";
+import Playground from "./sections/Playground";
 import Blog from "./sections/Blog";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
@@ -51,6 +52,7 @@ const Layout = () => {
           <Experience />
           <Education />
           <Projects />
+          <Playground />
           <Blog />
           <Contact />
           <Footer />

@@ -1,4 +1,5 @@
-import { FaEnvelope, FaFolderOpen, FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
+import { FaEnvelope, FaFolderOpen, FaGithub, FaLinkedin, FaDownload, FaMedium } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import profilePhoto from "../../assets/profile-photo.jpg";
@@ -125,6 +126,7 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-light-text hover:text-primary transition-colors"
+                aria-label="GitHub Profile"
               >
                 <FaGithub className="text-2xl" />
               </a>
@@ -138,8 +140,27 @@ const Hero = () => {
                 <FaLinkedin className="text-2xl" />
               </a>
               <a
+                href="https://medium.com/@unclejiyo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-light-text hover:text-primary transition-colors"
+                aria-label="Medium Profile"
+              >
+                <FaMedium className="text-2xl" />
+              </a>
+              <a
+                href="https://leetcode.com/u/unclejiyo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-light-text hover:text-primary transition-colors"
+                aria-label="LeetCode Profile"
+              >
+                <SiLeetcode className="text-2xl" />
+              </a>
+              <a
                 href="mailto:namanvashi@gmail.com"
                 className="text-light-text hover:text-primary transition-colors"
+                aria-label="Email Contact"
               >
                 <FaEnvelope className="text-2xl" />
               </a>
