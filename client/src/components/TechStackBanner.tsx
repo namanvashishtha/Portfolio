@@ -11,7 +11,7 @@ const TechStackBanner = () => {
     { icon: <SiFlask />, name: 'Flask', color: 'bg-gray-600' },
     { icon: <FaNodeJs />, name: 'Node.js', color: 'bg-green-500' },
     { icon: <FaJs />, name: 'JavaScript', color: 'bg-yellow-500' },
-    { icon: <SiTypescript />, name: 'TypeScript', color: 'bg-blue-600' },
+    // { icon: <SiTypescript />, name: 'TypeScript', color: 'bg-blue-600' },
     { icon: <FaReact />, name: 'React', color: 'bg-cyan-400' },
     { icon: <FaCss3 />, name: 'CSS', color: 'bg-blue-500' },
     { icon: <SiPostgresql />, name: 'PostgreSQL', color: 'bg-yellow-500' },

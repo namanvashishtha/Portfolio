@@ -33,7 +33,7 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
   ];
 
   return (
-<aside className="md:w-40 lg:w-20 dark-card fixed md:relative z-50 transition-all duration-300 top-0 left-0 h-screen md:min-h-screen hidden md:flex flex-col items-center justify-between py-8 overflow-hidden">
+<aside className="md:w-60 lg:w-22 dark-card fixed md:relative z-50 transition-all duration-300 top-0 left-0 min-h-fit hidden md:flex flex-col items-center justify-between py-8 overflow-visible">
       <div className="flex flex-col items-center">
         <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-6 text-lg">
           NV
@@ -62,54 +62,66 @@ const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
         </nav>
       </div>
       <div>
-<ul className="flex flex-col gap-8 items-center">
-          <li>
+<ul className="flex flex-col gap-6 items-center">
+          <li className="relative group">
             <a 
               href="https://github.com/namanvashishtha" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-muted hover:text-white transition-colors"
+              className="text-xl transition-colors"
               style={{ color: "#6e5494" }}
               aria-label="GitHub Profile"
             >
-              <FaGithub className="text-xl" />
+              <FaGithub />
             </a>
+            <span className="absolute left-10 opacity-0 group-hover:opacity-100 bg-dark text-white text-xs font-medium px-2 py-1 rounded-md shadow-lg transition-opacity duration-300 whitespace-nowrap z-50">
+              GitHub
+            </span>
           </li>
-          <li>
+          <li className="relative group">
             <a 
               href="https://www.linkedin.com/in/naman-vashishtha-974b011a1" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-muted hover:text-white transition-colors"
+              className="text-xl transition-colors"
               style={{ color: "#0e76a8" }}
               aria-label="LinkedIn Profile"
             >
-              <FaLinkedin className="text-xl" />
+              <FaLinkedin />
             </a>
+            <span className="absolute left-10 opacity-0 group-hover:opacity-100 bg-dark text-white text-xs font-medium px-2 py-1 rounded-md shadow-lg transition-opacity duration-300 whitespace-nowrap z-50">
+              LinkedIn
+            </span>
           </li>
-          <li>
+          <li className="relative group">
             <a 
               href="https://medium.com/@unclejiyo" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-muted hover:text-white transition-colors"
+              className="text-xl transition-colors"
               style={{ color: "#00ab6c" }}
               aria-label="Medium Profile"
             >
-              <FaMedium className="text-xl" />
+              <FaMedium />
             </a>
+            <span className="absolute left-10 opacity-0 group-hover:opacity-100 bg-dark text-white text-xs font-medium px-2 py-1 rounded-md shadow-lg transition-opacity duration-300 whitespace-nowrap z-50">
+              Medium
+            </span>
           </li>
-          <li>
+          <li className="relative group">
             <a 
               href="https://leetcode.com/u/unclejiyo" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-muted hover:text-white transition-colors"
+              className="text-xl transition-colors"
               style={{ color: "#FFA116" }}
               aria-label="LeetCode Profile"
             >
-              <SiLeetcode className="text-xl" />
+              <SiLeetcode />
             </a>
+            <span className="absolute left-10 opacity-0 group-hover:opacity-100 bg-dark text-white text-xs font-medium px-2 py-1 rounded-md shadow-lg transition-opacity duration-300 whitespace-nowrap z-50">
+              LeetCode
+            </span>
           </li>
         </ul>
       </div>
