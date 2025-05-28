@@ -40,10 +40,10 @@ const About = () => {
         >
           <motion.div variants={itemVariants}>
             <p className="text-light-text leading-relaxed mb-6">
-              Software engineer with expertise in Java, Python, AI-ML, and JavaScript. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions. Skilled in collaboration, problem-solving, and technical documentation.
+              Software engineer with expertise in Fullstack Development. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions. Skilled in collaboration, problem-solving, and technical documentation.
             </p>
             <p className="text-light-text leading-relaxed mb-6">
-              Currently working as a Software Engineer at Zenner Connect, Germany where I'm spearheading development of scalable web applications using Python and React.js.
+              Currently working as a Software Engineer for Zenner Connect, Germany where I'm spearheading development of scalable web applications using Python and React.js.
             </p>
             <div className="flex flex-wrap gap-5 mt-8">
               <div className="flex items-center gap-2">
