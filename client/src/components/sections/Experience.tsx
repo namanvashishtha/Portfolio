@@ -24,7 +24,8 @@ const Experience = () => {
         "Developed scalable applications using JavaScript, enhancing process efficiency by 30%.",
         "Designed and optimized BPM workflows, reducing processing time by 25%.",
         "Automated business tasks, cutting manual effort by 40% and boosting accuracy.",
-        "Integrated REST and SOAP APIs to improve system interoperability by 35%."
+        "Integrated REST and SOAP APIs to improve system interoperability by 35%.",
+        "Streamlined 200K+ device records across multiple LNS databases by reconciling with MongoDB inventory, boosting provisioning accuracy to 100% and cutting errors by 95% through data validation, RCA, and process optimization."  
       ],
       color: "bg-secondary"
     },
