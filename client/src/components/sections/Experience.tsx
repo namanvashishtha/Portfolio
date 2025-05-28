@@ -6,12 +6,13 @@ const Experience = () => {
     {
       position: "left",
       title: "Software Engineer",
-      company: "Zenner International, India",
+      company: "Zenner India, Faridabad",
       period: "April 2025 – Present",
       details: [
         "Spearheading development of scalable web applications from scratch using Python and React.js, enabling real-time data interaction and analytics.",
         "Architected RESTful APIs in Python and integrated with dynamic React frontends, enhancing responsiveness and user experience.",
-        "Collaborating closely with cross-functional teams to define user requirements and deliver robust, end-to-end solutions."
+        "Collaborating closely with cross-functional teams to define user requirements and deliver robust, end-to-end solutions.",
+        "Streamlined 200K+ device records across multiple LNS databases by reconciling with MongoDB inventory, boosting provisioning accuracy to 100% and cutting errors by 95% through data validation, RCA, and process optimization."  
       ],
       color: "bg-primary"
     },
@@ -24,8 +25,8 @@ const Experience = () => {
         "Developed scalable applications using JavaScript, enhancing process efficiency by 30%.",
         "Designed and optimized BPM workflows, reducing processing time by 25%.",
         "Automated business tasks, cutting manual effort by 40% and boosting accuracy.",
-        "Integrated REST and SOAP APIs to improve system interoperability by 35%.",
-        "Streamlined 200K+ device records across multiple LNS databases by reconciling with MongoDB inventory, boosting provisioning accuracy to 100% and cutting errors by 95% through data validation, RCA, and process optimization."  
+        "Integrated REST and SOAP APIs to improve system interoperability by 35%."
+        
       ],
       color: "bg-secondary"
     },
