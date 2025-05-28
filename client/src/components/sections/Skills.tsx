@@ -36,7 +36,8 @@ const Skills = () => {
       skills: [
         "PostgreSQL",
         "MSSQL",
-        "MongoDB"
+        "MongoDB",
+        "Redis",
       ],
       color: "text-yellow-500",
       hoverShadow: "hover:shadow-yellow-500/10"
