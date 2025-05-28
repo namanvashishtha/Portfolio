@@ -87,7 +87,7 @@ const Hero = () => {
               </span>
             </div>
             <p className="text-light-text text-lg md:text-xl max-w-xl my-6">
-              Software engineer with expertise in Java, Python, AI-ML, and JavaScript. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions.
+              Software engineer with expertise in FullStack Development. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions.
             </p>
 
             <div className="flex flex-wrap gap-4 mt-8">
