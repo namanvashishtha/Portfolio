@@ -19,6 +19,14 @@ const games: Game[] = [
     image: "/snake.jpg",
     url: "https://snake-game-naman-vashi.vercel.app/",
     technologies: ["HTML", "CSS", "JavaScript", "Canvas API"]
+  },
+  {
+    id: 2,
+    title: "Breakout Game",
+    description: "A classic Breakout game built with modern web technologies. Bounce the ball, break the bricks, and clear the level!",
+    image: "/breakout.jpg",
+    url: "https://breakout-game-naman-vashi.vercel.app/",
+    technologies: ["Javascript", "HTML", "CSS", "Canvas API"]
   }
   // Add more games here in the future
 ];
@@ -50,7 +58,7 @@ const Playground = () => {
           <h2 className="text-3xl font-bold mb-2">Playground</h2>
           <div className="h-1 w-20 bg-primary rounded"></div>
           <p className="text-muted-foreground mt-4 max-w-2xl">
-            Check out some interactive projects I've developed. You can play with them directly in your browser!
+            Check out some interactive games I've developed. You can play with them directly in your browser!
           </p>
         </motion.div>
 
