@@ -56,7 +56,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16 keep-white">
+    <section id="skills" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16">
       <div className="container max-w-6xl mx-auto">
         <motion.div 
           className="mb-8 md:mb-12"

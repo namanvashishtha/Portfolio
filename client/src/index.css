@@ -161,6 +161,15 @@
     @apply bg-[#1E1E1E]/80 backdrop-blur-sm;
   }
 
+  /* Light theme section backgrounds */
+  .light .dark-section {
+    @apply bg-gradient-to-br from-[#fefcf9]/95 to-[#f8f6f0]/95 backdrop-blur-sm;
+  }
+  
+  .light .dark-card {
+    @apply bg-gradient-to-br from-white/95 to-[#fefcf9]/95 backdrop-blur-sm shadow-lg border border-gray-100;
+  }
+
   /* Mobile-specific utilities */
   @media (max-width: 768px) {
     .dark-section {
@@ -169,6 +178,15 @@
     
     .dark-card {
       @apply bg-[#1E1E1E]/90;
+    }
+    
+    /* Light theme mobile */
+    .light .dark-section {
+      @apply bg-gradient-to-br from-[#fefcf9]/98 to-[#f8f6f0]/98;
+    }
+    
+    .light .dark-card {
+      @apply bg-gradient-to-br from-white/98 to-[#fefcf9]/98 shadow-lg border border-gray-100;
     }
   }
 
@@ -226,13 +244,13 @@
     pointer-events: auto !important;
   }
   
-  /* Force white text in specific sections regardless of theme */
+  /* Text color utilities for theme compatibility */
   .text-light-text {
     @apply text-gray-300;
   }
   
   .light .text-light-text {
-    @apply text-white !important;
+    @apply text-gray-700;
   }
   
   .text-muted {
@@ -240,48 +258,7 @@
   }
   
   .light .text-muted {
-    @apply text-white !important;
-  }
-  
-  /* Force white text for section headers in light mode */
-  .light .keep-white h2,
-  .light .keep-white h3,
-  .light .keep-white h4 {
-    @apply text-white !important;
-  }
-  
-  /* Force white text for paragraphs and spans in light mode */
-  .light .keep-white p,
-  .light .keep-white span,
-  .light .keep-white li {
-    @apply text-white !important;
-  }
-  
-  /* Force white text for specific elements */
-  .light .keep-white .contact-info {
-    @apply text-white !important;
-  }
-  
-  /* Force white text for email links */
-  .light .keep-white a {
-    @apply text-white !important;
-  }
-  
-  .light .keep-white a:hover {
-    @apply text-primary !important;
-  }
-  
-  /* Force white text for all elements within cards */
-  .light .keep-white .dark-card {
-    @apply text-white !important;
-  }
-  
-  .light .keep-white .dark-card h3,
-  .light .keep-white .dark-card h4,
-  .light .keep-white .dark-card p,
-  .light .keep-white .dark-card span,
-  .light .keep-white .dark-card li {
-    @apply text-white !important;
+    @apply text-gray-600;
   }
   
   /* Hide scrollbar for Chrome, Safari and Opera */
