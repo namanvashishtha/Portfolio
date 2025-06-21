@@ -39,19 +39,19 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16">
+    <section id="home" className="min-h-screen flex flex-col justify-center px-4 md:px-6 lg:px-12 xl:px-16">
       <Toaster position="top-center" reverseOrder={false} />
-      <div className="container max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-16">
+      <div className="container max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 lg:gap-16">
           <motion.div
             className="md:w-1/3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative group max-w-xs mx-auto md:mx-0">
+            <div className="relative group max-w-[200px] sm:max-w-xs mx-auto md:mx-0">
               <div
-                className="overflow-hidden rounded-full border-2 border-primary shadow-lg shadow-primary/20 z-10 relative transition-all duration-300 transform group-hover:scale-105 cursor-pointer"
+                className="overflow-hidden rounded-full border-2 border-primary shadow-lg shadow-primary/20 z-10 relative transition-all duration-300 transform group-hover:scale-105 cursor-pointer touch-manipulation"
                 onClick={handleImageClick}
               >
                 <div className="aspect-square w-full bg-gradient-to-br from-primary/20 to-background relative overflow-hidden">
@@ -77,92 +77,92 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 text-center md:text-left">
               <span>Hi, I'm</span>
               <span className="text-primary block md:inline"> Naman Vashishtha</span>
             </h1>
-            <div className="h-6 my-4">
-              <span className="text-xl md:text-2xl font-light text-accent inline-block">
+            <div className="h-6 my-4 text-center md:text-left">
+              <span className="text-lg sm:text-xl md:text-2xl font-light text-accent inline-block">
                 Software Engineer
               </span>
             </div>
-            <p className="text-light-text text-lg md:text-xl max-w-xl my-6">
+            <p className="text-light-text text-base sm:text-lg md:text-xl max-w-xl my-6 text-center md:text-left leading-relaxed">
               Software engineer with expertise in FullStack Development. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions.
             </p>
 
-            <div className="flex flex-wrap gap-4 mt-8">
+            <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mt-8">
               <a
                 href="#contact"
-                className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2"
+                className="bg-primary hover:bg-primary/90 text-white px-4 sm:px-6 py-3 rounded-md font-medium transition-all flex items-center justify-center gap-2 min-h-[44px] flex-1 sm:flex-initial touch-manipulation"
               >
-                <FaEnvelope />
-                Contact Me
+                <FaEnvelope className="text-sm" />
+                <span className="text-sm sm:text-base">Contact Me</span>
               </a>
               <a
                 href="#projects"
-                className="border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2"
+                className="border border-primary text-primary hover:bg-primary/10 px-4 sm:px-6 py-3 rounded-md font-medium transition-all flex items-center justify-center gap-2 min-h-[44px] flex-1 sm:flex-initial touch-manipulation"
               >
-                <FaFolderOpen />
-                Projects
+                <FaFolderOpen className="text-sm" />
+                <span className="text-sm sm:text-base">Projects</span>
               </a>
 
-              {/* ✅ Updated Download Button */}
               <a
                 href="/Naman_Vashishtha_Resume.pdf"
                 download="Naman_Vashishtha_Resume.pdf"
-                className="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md font-medium transition-all flex items-center gap-2 group"
+                className="bg-secondary hover:bg-secondary/90 text-white px-4 sm:px-6 py-3 rounded-md font-medium transition-all flex items-center justify-center gap-2 group min-h-[44px] flex-1 sm:flex-initial touch-manipulation"
               >
-                <FaDownload className="animate-download" />
-                <span className="relative">
-                  Download CV
+                <FaDownload className="animate-download text-sm" />
+                <span className="relative text-sm sm:text-base">
+                  <span className="hidden sm:inline">Download CV</span>
+                  <span className="sm:hidden">CV</span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 </span>
               </a>
             </div>
 
-            <div className="flex gap-4 mt-8">
+            <div className="flex justify-center md:justify-start gap-4 sm:gap-6 mt-8">
               <a
                 href="https://github.com/namanvashishtha"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-light-text hover:text-primary transition-colors"
+                className="text-light-text hover:text-primary transition-colors p-2 rounded-md touch-manipulation"
                 aria-label="GitHub Profile"
               >
-                <FaGithub className="text-2xl" />
+                <FaGithub className="text-xl sm:text-2xl" />
               </a>
               <a
                 href="https://www.linkedin.com/in/naman-vashishtha-974b011a1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-light-text hover:text-primary transition-colors"
+                className="text-light-text hover:text-primary transition-colors p-2 rounded-md touch-manipulation"
                 aria-label="LinkedIn Profile"
               >
-                <FaLinkedin className="text-2xl" />
+                <FaLinkedin className="text-xl sm:text-2xl" />
               </a>
               <a
                 href="https://medium.com/@unclejiyo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-light-text hover:text-primary transition-colors"
+                className="text-light-text hover:text-primary transition-colors p-2 rounded-md touch-manipulation"
                 aria-label="Medium Profile"
               >
-                <FaMedium className="text-2xl" />
+                <FaMedium className="text-xl sm:text-2xl" />
               </a>
               <a
                 href="https://leetcode.com/u/unclejiyo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-light-text hover:text-primary transition-colors"
+                className="text-light-text hover:text-primary transition-colors p-2 rounded-md touch-manipulation"
                 aria-label="LeetCode Profile"
               >
-                <SiLeetcode className="text-2xl" />
+                <SiLeetcode className="text-xl sm:text-2xl" />
               </a>
               <a
                 href="mailto:namanvashi@gmail.com"
-                className="text-light-text hover:text-primary transition-colors"
+                className="text-light-text hover:text-primary transition-colors p-2 rounded-md touch-manipulation"
                 aria-label="Email Contact"
               >
-                <FaEnvelope className="text-2xl" />
+                <FaEnvelope className="text-xl sm:text-2xl" />
               </a>
             </div>
           </motion.div>

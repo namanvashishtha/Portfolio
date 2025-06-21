@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaGamepad, FaExternalLinkAlt, FaArrowLeft } from "react-icons/fa";
 
@@ -27,6 +27,14 @@ const games: Game[] = [
     image: "/breakout.jpg",
     url: "https://breakout-game-naman-vashi.vercel.app/",
     technologies: ["Javascript", "HTML", "CSS", "Canvas API"]
+  },
+  {
+    id: 3,
+    title: "Maze Runner",
+    description: "Move through maze, collect keys and find the exit. Avoid enemies and try to reach the goal as quickly as possible!",
+    image: "/maze-runner.jpg",
+    url: "https://maze-runner-naman-vashi.vercel.app/",
+    technologies: ["Javascript", "HTML", "CSS", "Canvas API"]
   }
   // Add more games here in the future
 ];
@@ -34,11 +42,30 @@ const games: Game[] = [
 const Playground = () => {
   const [activeGame, setActiveGame] = useState<Game | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleGameClick = (game: Game) => {
     setActiveGame(game);
     // Reset fullscreen state when selecting a new game
     setIsFullscreen(false);
+    
+    // On mobile, scroll to top when a game is selected
+    if (isMobile) {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
   };
 
   const toggleFullscreen = () => {
@@ -46,18 +73,18 @@ const Playground = () => {
   };
 
   return (
-    <section id="playground" className="py-20 px-6 md:px-12 lg:px-16">
+    <section id="playground" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16">
       <div className="container max-w-6xl mx-auto">
         <motion.div
-          className="mb-12"
+          className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold mb-2">Playground</h2>
-          <div className="h-1 w-20 bg-primary rounded"></div>
-          <p className="text-muted-foreground mt-4 max-w-2xl">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Playground</h2>
+          <div className="h-1 w-16 md:w-20 bg-primary rounded"></div>
+          <p className="text-muted-foreground mt-4 max-w-2xl text-sm md:text-base">
             Check out some interactive games I've developed. You can play with them directly in your browser!
           </p>
         </motion.div>
@@ -71,17 +98,17 @@ const Playground = () => {
               isFullscreen ? "fixed inset-0 z-50 m-0 rounded-none" : ""
             }`}
           >
-            <div className="p-4 bg-card/80 backdrop-blur-sm flex justify-between items-center">
+            <div className="p-3 md:p-4 bg-card/80 backdrop-blur-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
               <button
                 onClick={() => setActiveGame(null)}
-                className="text-primary hover:underline inline-flex items-center gap-1"
+                className="text-primary hover:underline inline-flex items-center gap-1 text-sm md:text-base min-h-[44px] px-2 py-1 rounded-md touch-manipulation"
               >
-                <FaArrowLeft /> Back to playground
+                <FaArrowLeft className="text-xs md:text-sm" /> Back to playground
               </button>
-              <div className="flex gap-3">
+              <div className="flex gap-2 md:gap-3 w-full sm:w-auto">
                 <button
                   onClick={toggleFullscreen}
-                  className="px-3 py-1 bg-primary/20 text-primary rounded-md hover:bg-primary/30 transition-colors"
+                  className="px-3 py-2 md:px-3 md:py-1 bg-primary/20 text-primary rounded-md hover:bg-primary/30 transition-colors text-xs md:text-sm min-h-[44px] flex-1 sm:flex-initial touch-manipulation"
                 >
                   {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
                 </button>
@@ -89,32 +116,43 @@ const Playground = () => {
                   href={activeGame.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors inline-flex items-center gap-1"
+                  className="px-3 py-2 md:px-3 md:py-1 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors inline-flex items-center justify-center gap-1 text-xs md:text-sm min-h-[44px] flex-1 sm:flex-initial touch-manipulation"
                 >
-                  <FaExternalLinkAlt size={12} /> Open in New Tab
+                  <FaExternalLinkAlt size={10} className="md:text-xs" /> 
+                  <span className="hidden sm:inline">Open in New Tab</span>
+                  <span className="sm:hidden">Open</span>
                 </a>
               </div>
             </div>
             
-            <div className={`w-full ${isFullscreen ? "h-[calc(100vh-64px)]" : "h-[70vh]"}`}>
+            <div className={`w-full ${
+              isFullscreen 
+                ? "h-[calc(100vh-80px)] md:h-[calc(100vh-64px)]" 
+                : "h-[50vh] sm:h-[60vh] md:h-[70vh]"
+            }`}>
               <iframe
                 src={activeGame.url}
                 title={activeGame.title}
-                className="w-full h-full border-0"
+                className="w-full h-full border-0 bg-gray-100 dark:bg-gray-800"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                loading="lazy"
+                style={{ 
+                  minHeight: isMobile ? '400px' : '500px',
+                  touchAction: 'manipulation'
+                }}
               ></iframe>
             </div>
             
             {!isFullscreen && (
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">{activeGame.title}</h3>
-                <p className="text-muted-foreground mb-4">{activeGame.description}</p>
+              <div className="p-4 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-2">{activeGame.title}</h3>
+                <p className="text-muted-foreground mb-4 text-sm md:text-base leading-relaxed">{activeGame.description}</p>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {activeGame.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
+                      className="px-2 md:px-3 py-1 bg-primary/10 text-primary text-xs md:text-sm rounded-full"
                     >
                       {tech}
                     </span>
@@ -124,37 +162,41 @@ const Playground = () => {
             )}
           </motion.div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {games.map((game, index) => (
               <motion.div
                 key={game.id}
-                className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer group"
+                className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group touch-manipulation active:scale-95"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => handleGameClick(game)}
               >
-                <div className="h-48 overflow-hidden relative">
+                <div className="h-40 md:h-48 overflow-hidden relative">
                   <img
                     src={game.image}
                     alt={game.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button className="px-4 py-2 bg-primary text-white rounded-md flex items-center gap-2">
-                      <FaGamepad /> Play Now
+                    <button className="px-4 py-2 bg-primary text-white rounded-md flex items-center gap-2 text-sm md:text-base min-h-[44px] touch-manipulation">
+                      <FaGamepad className="text-sm md:text-base" /> Play Now
                     </button>
                   </div>
+                  {/* Mobile tap indicator */}
+                  <div className="md:hidden absolute top-2 right-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
+                    Tap to play
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                <div className="p-4 md:p-6">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                     {game.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2 md:line-clamp-3 leading-relaxed">
                     {game.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 md:gap-2">
                     {game.technologies.slice(0, 3).map((tech, index) => (
                       <span
                         key={index}

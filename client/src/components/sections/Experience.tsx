@@ -46,22 +46,22 @@ const Experience = () => {
   ] as const;
 
   return (
-    <section id="experience" className="py-20 px-6 md:px-12 lg:px-16 dark-section">
+    <section id="experience" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16 dark-section">
       <div className="container max-w-6xl mx-auto">
         <motion.div
-          className="mb-12"
+          className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold mb-2">Experience</h2>
-          <div className="h-1 w-20 bg-primary rounded"></div>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Experience</h2>
+          <div className="h-1 w-16 md:w-20 bg-primary rounded"></div>
         </motion.div>
 
         <div className="relative">
           {/* Vertical Line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#1E1E1E] transform -translate-x-1/2"></div>
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#1E1E1E] transform -translate-x-1/2"></div>
 
           {experiences.map((exp, index) => (
             <TimelineItem

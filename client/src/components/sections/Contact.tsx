@@ -84,62 +84,62 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 md:px-12 lg:px-16">
+    <section id="contact" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16">
       <div className="container max-w-6xl mx-auto">
         <motion.div
-          className="mb-12"
+          className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold mb-2">Contact Me</h2>
-          <div className="h-1 w-20 bg-primary rounded"></div>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Contact Me</h2>
+          <div className="h-1 w-16 md:w-20 bg-primary rounded"></div>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-light-text mb-8">
+            <p className="text-light-text mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed">
               I'm open to freelance opportunities – especially ambitious or large projects.
               However, if you have other requests or questions, don't hesitate to use the form.
             </p>
-            <div className="space-y-5">
-              <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
-                  <FaMapMarkerAlt />
+            <div className="space-y-4 sm:space-y-5">
+              <div className="flex items-start gap-3 sm:gap-5">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary flex-shrink-0">
+                  <FaMapMarkerAlt className="text-sm sm:text-base" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Location</h3>
-                  <p className="text-light-text">Faridabad, India</p>
+                  <h3 className="font-semibold mb-1 text-sm sm:text-base">Location</h3>
+                  <p className="text-light-text text-sm sm:text-base">Faridabad, India</p>
                 </div>
               </div>
-              <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
-                  <FaEnvelope />
+              <div className="flex items-start gap-3 sm:gap-5">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary flex-shrink-0">
+                  <FaEnvelope className="text-sm sm:text-base" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Email</h3>
-                  <p className="text-light-text">
+                  <h3 className="font-semibold mb-1 text-sm sm:text-base">Email</h3>
+                  <p className="text-light-text text-sm sm:text-base">
                     <a
                       href="mailto:namanvashi@gmail.com"
-                      className="hover:text-primary transition-colors"
+                      className="hover:text-primary transition-colors break-all touch-manipulation"
                     >
                       namanvashi@gmail.com
                     </a>
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
-                  <FaPhone />
+              <div className="flex items-start gap-3 sm:gap-5">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary flex-shrink-0">
+                  <FaPhone className="text-sm sm:text-base" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Phone</h3>
-                  <p className="text-light-text">+91 8448362072</p>
+                  <h3 className="font-semibold mb-1 text-sm sm:text-base">Phone</h3>
+                  <p className="text-light-text text-sm sm:text-base">+91 8448362072</p>
                 </div>
               </div>
             </div>
@@ -150,8 +150,8 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                 <div>
                   <input
                     type="text"
@@ -159,7 +159,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Name"
-                    className="w-full dark-card rounded-lg border border-gray-700 p-4 text-white focus:outline-none focus:border-primary transition-colors"
+                    className="w-full dark-card rounded-lg border border-gray-700 p-3 sm:p-4 text-white focus:outline-none focus:border-primary transition-colors text-sm sm:text-base touch-manipulation"
                     required
                   />
                 </div>
@@ -170,7 +170,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Email"
-                    className="w-full dark-card rounded-lg border border-gray-700 p-4 text-white focus:outline-none focus:border-primary transition-colors"
+                    className="w-full dark-card rounded-lg border border-gray-700 p-3 sm:p-4 text-white focus:outline-none focus:border-primary transition-colors text-sm sm:text-base touch-manipulation"
                     required
                   />
                 </div>
@@ -182,7 +182,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Subject"
-                  className="w-full dark-card rounded-lg border border-gray-700 p-4 text-white focus:outline-none focus:border-primary transition-colors"
+                  className="w-full dark-card rounded-lg border border-gray-700 p-3 sm:p-4 text-white focus:outline-none focus:border-primary transition-colors text-sm sm:text-base touch-manipulation"
                 />
               </div>
               <div>
@@ -191,15 +191,15 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Message"
-                  rows={5}
-                  className="w-full dark-card rounded-lg border border-gray-700 p-4 text-white focus:outline-none focus:border-primary transition-colors resize-none"
+                  rows={4}
+                  className="w-full dark-card rounded-lg border border-gray-700 p-3 sm:p-4 text-white focus:outline-none focus:border-primary transition-colors resize-none text-sm sm:text-base touch-manipulation min-h-[120px] sm:min-h-[140px]"
                   required
                 ></textarea>
               </div>
               <div>
                 <button
                   type="submit"
-                  className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg font-medium transition-all flex items-center gap-2"
+                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium transition-all flex items-center justify-center gap-2 min-h-[44px] touch-manipulation text-sm sm:text-base"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

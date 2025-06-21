@@ -1,9 +1,30 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import type { Container, Engine } from "tsparticles-engine";
 
 const ParticleBackground = () => {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    // Check initial theme
+    const checkTheme = () => {
+      const isLightMode = document.documentElement.classList.contains('light');
+      setIsDark(!isLightMode);
+    };
+    
+    checkTheme();
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
+    return () => observer.disconnect();
+  }, []);
+
   const particlesInit = useCallback(async (engine: Engine) => {
     // This loads the particles module
     await loadSlim(engine);
@@ -22,7 +43,7 @@ const ParticleBackground = () => {
       options={{
         background: {
           color: {
-            value: "#0a0a0a", // Very dark background
+            value: isDark ? "#0a0a0a" : "#ffffff", // Dynamic background based on theme
           },
         },
         fpsLimit: 60,
@@ -60,10 +81,10 @@ const ParticleBackground = () => {
             value: "#ff1493", // Pink particles to match primary color
           },
           links: {
-            color: "#ff1493",
+            color: isDark ? "#ff1493" : "#ff1493", // Keep pink links for both themes
             distance: 150,
             enable: true,
-            opacity: 0.2,
+            opacity: isDark ? 0.2 : 0.3, // Slightly more visible in light mode
             width: 1,
           },
           collisions: {
@@ -87,7 +108,7 @@ const ParticleBackground = () => {
             value: 100, // More particles
           },
           opacity: {
-            value: 0.7,
+            value: isDark ? 0.7 : 0.5, // Adjust opacity for better visibility in light mode
           },
           shape: {
             type: "circle",

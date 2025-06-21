@@ -19,54 +19,54 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 px-6 md:px-12 lg:px-16 dark-section">
+    <section id="about" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16 dark-section">
       <div className="container max-w-6xl mx-auto">
         <motion.div 
-          className="mb-12"
+          className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold mb-2">About Me</h2>
-          <div className="h-1 w-20 bg-primary rounded"></div>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">About Me</h2>
+          <div className="h-1 w-16 md:w-20 bg-primary rounded"></div>
         </motion.div>
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-10"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
           <motion.div variants={itemVariants}>
-            <p className="text-light-text leading-relaxed mb-6">
+            <p className="text-light-text leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
               Software engineer with expertise in Fullstack Development. Adept at managing end-to-end SDLC processes and delivering efficient, scalable solutions. Skilled in collaboration, problem-solving, and technical documentation.
             </p>
-            <p className="text-light-text leading-relaxed mb-6">
+            <p className="text-light-text leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
               Currently working as a Software Engineer for Zenner Connect, Germany where I'm spearheading development of scalable web applications using Python and React.js.
             </p>
-            <div className="flex flex-wrap gap-5 mt-8">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5 mt-6 sm:mt-8">
               <div className="flex items-center gap-2">
-                <FaMapMarkerAlt className="text-primary" />
-                <span>Faridabad, India</span>
+                <FaMapMarkerAlt className="text-primary text-sm sm:text-base flex-shrink-0" />
+                <span className="text-sm sm:text-base">Faridabad, India</span>
               </div>
               <div className="flex items-center gap-2">
-                <FaEnvelope className="text-primary" />
+                <FaEnvelope className="text-primary text-sm sm:text-base flex-shrink-0" />
                 <a 
                   href="mailto:namanvashi@gmail.com" 
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors text-sm sm:text-base break-all touch-manipulation"
                 >
                   namanvashi@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <FaPhone className="text-primary" />
-                <span>+91 8448362072</span>
+                <FaPhone className="text-primary text-sm sm:text-base flex-shrink-0" />
+                <span className="text-sm sm:text-base">+91 8448362072</span>
               </div>
             </div>
           </motion.div>
-          <motion.div variants={itemVariants}>
-            <div className="space-y-5">
+          <motion.div variants={itemVariants} className="mt-8 lg:mt-0">
+            <div className="space-y-4 sm:space-y-5">
               <ProgressBar 
                 skillName="Java Development" 
                 percentage={90} 

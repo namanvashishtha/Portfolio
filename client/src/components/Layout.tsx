@@ -30,7 +30,7 @@ const Layout = () => {
   }, [activeSection]);
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row relative overflow-hidden">
+    <div className="min-h-screen flex flex-col md:flex-row relative overflow-hidden prevent-scroll">
       {/* Particle background */}
       <div className="fixed inset-0 z-0">
         <ParticleBackground />
@@ -43,8 +43,7 @@ const Layout = () => {
         <TechStackBanner />
         <ThemeToggle />
         
-        {/* <main className="flex-grow pt-16 md:pt-0 md:pl-20 lg:pl-24"> */}
-        <main className="flex-grow pt-16 px-4 md:px-8 lg:px-12 xl:px-20 text-left items-start">
+        <main className="flex-grow pt-16 md:pt-0 px-4 md:px-8 lg:px-12 xl:px-20 text-left items-start overflow-x-hidden max-w-full w-full">
 
           <Hero />
           <About />
