@@ -12,7 +12,8 @@ const Experience = () => {
         "Spearheading development of scalable web applications from scratch using Python and React.js, enabling real-time data interaction and analytics.",
         "Architected RESTful APIs in Python and integrated with dynamic React frontends, enhancing responsiveness and user experience.",
         "Collaborating closely with cross-functional teams to define user requirements and deliver robust, end-to-end solutions.",
-        "Streamlined 200K+ device records across multiple LNS databases by reconciling with MongoDB inventory, boosting provisioning accuracy to 100% and cutting errors by 95% through data validation, RCA, and process optimization."  
+        "Streamlined 3 million+ device records across multiple LNS databases by reconciling with MongoDB inventory, boosting provisioning accuracy to 100% and cutting errors by 95% through data validation, RCA, and process optimization.",
+        "Built an automation pipeline that extracts fields from Jira tickets, queries MongoDB, generates CSV reports, and attaches them back—saving 30+ minutes daily  Scheduled via CRON, this solution improved response time by 30% and eliminated manual errors."
       ],
       color: "bg-primary"
     },
