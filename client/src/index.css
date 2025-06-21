@@ -163,11 +163,13 @@
 
   /* Light theme section backgrounds */
   .light .dark-section {
-    @apply bg-gradient-to-br from-[#fefcf9]/95 to-[#f8f6f0]/95 backdrop-blur-sm;
+    @apply bg-gradient-to-br from-[#fefcf9] to-[#f8f6f0] backdrop-blur-sm;
+    opacity: 0.95;
   }
   
   .light .dark-card {
-    @apply bg-gradient-to-br from-white/95 to-[#fefcf9]/95 backdrop-blur-sm shadow-lg border border-gray-100;
+    @apply bg-gradient-to-br from-white to-[#fefcf9] backdrop-blur-sm shadow-lg border border-gray-100;
+    opacity: 0.95;
   }
 
   /* Mobile-specific utilities */
@@ -182,11 +184,13 @@
     
     /* Light theme mobile */
     .light .dark-section {
-      @apply bg-gradient-to-br from-[#fefcf9]/98 to-[#f8f6f0]/98;
+      @apply bg-gradient-to-br from-[#fefcf9] to-[#f8f6f0];
+      opacity: 0.98;
     }
     
     .light .dark-card {
-      @apply bg-gradient-to-br from-white/98 to-[#fefcf9]/98 shadow-lg border border-gray-100;
+      @apply bg-gradient-to-br from-white to-[#fefcf9] shadow-lg border border-gray-100;
+      opacity: 0.98;
     }
   }
 
