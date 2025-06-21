@@ -19,7 +19,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16 dark-section">
+    <section id="about" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16 dark-section keep-white">
       <div className="container max-w-6xl mx-auto">
         <motion.div 
           className="mb-8 md:mb-12"
@@ -45,7 +45,7 @@ const About = () => {
             <p className="text-light-text leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
               Currently working as a Software Engineer for Zenner Connect, Germany where I'm spearheading development of scalable web applications using Python and React.js.
             </p>
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5 mt-6 sm:mt-8">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5 mt-6 sm:mt-8 contact-info">
               <div className="flex items-center gap-2">
                 <FaMapMarkerAlt className="text-primary text-sm sm:text-base flex-shrink-0" />
                 <span className="text-sm sm:text-base">Faridabad, India</span>

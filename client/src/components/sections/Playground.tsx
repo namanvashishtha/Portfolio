@@ -32,7 +32,7 @@ const games: Game[] = [
     id: 3,
     title: "Maze Runner",
     description: "Move through maze, collect keys and find the exit. Avoid enemies and try to reach the goal as quickly as possible!",
-    image: "/maze-runner.png",
+    image: "/maze-runner.jpg",
     url: "https://maze-runner-naman-vashi.vercel.app/",
     technologies: ["Vanilla JavaScript", "CSS", "Canvas API"]
   }
@@ -43,6 +43,7 @@ const Playground = () => {
   const [activeGame, setActiveGame] = useState<Game | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isGameLoading, setIsGameLoading] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -56,14 +57,18 @@ const Playground = () => {
   }, []);
 
   const handleGameClick = (game: Game) => {
+    setIsGameLoading(true);
     setActiveGame(game);
     // Reset fullscreen state when selecting a new game
     setIsFullscreen(false);
     
-    // On mobile, scroll to top when a game is selected
+    // On mobile, scroll to the playground section to keep user in context
     if (isMobile) {
       setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const playgroundSection = document.getElementById('playground');
+        if (playgroundSection) {
+          playgroundSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }, 100);
     }
   };
@@ -100,7 +105,10 @@ const Playground = () => {
           >
             <div className="p-3 md:p-4 bg-card/80 backdrop-blur-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
               <button
-                onClick={() => setActiveGame(null)}
+                onClick={() => {
+                  setActiveGame(null);
+                  setIsGameLoading(false);
+                }}
                 className="text-primary hover:underline inline-flex items-center gap-1 text-sm md:text-base min-h-[44px] px-2 py-1 rounded-md touch-manipulation"
               >
                 <FaArrowLeft className="text-xs md:text-sm" /> Back to playground
@@ -125,11 +133,19 @@ const Playground = () => {
               </div>
             </div>
             
-            <div className={`w-full ${
+            <div className={`w-full relative ${
               isFullscreen 
                 ? "h-[calc(100vh-80px)] md:h-[calc(100vh-64px)]" 
                 : "h-[50vh] sm:h-[60vh] md:h-[70vh]"
             }`}>
+              {isGameLoading && (
+                <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 flex items-center justify-center z-10">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
+                    <p className="text-sm text-muted-foreground">Loading game...</p>
+                  </div>
+                </div>
+              )}
               <iframe
                 src={activeGame.url}
                 title={activeGame.title}
@@ -137,6 +153,8 @@ const Playground = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 loading="lazy"
+                onLoad={() => setIsGameLoading(false)}
+                onError={() => setIsGameLoading(false)}
                 style={{ 
                   minHeight: isMobile ? '400px' : '500px',
                   touchAction: 'manipulation'
@@ -171,7 +189,14 @@ const Playground = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => handleGameClick(game)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleGameClick(game);
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  handleGameClick(game);
+                }}
               >
                 <div className="h-40 md:h-48 overflow-hidden relative">
                   <img
@@ -180,7 +205,13 @@ const Playground = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button className="px-4 py-2 bg-primary text-white rounded-md flex items-center gap-2 text-sm md:text-base min-h-[44px] touch-manipulation">
+                    <button 
+                      className="px-4 py-2 bg-primary text-white rounded-md flex items-center gap-2 text-sm md:text-base min-h-[44px] touch-manipulation"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleGameClick(game);
+                      }}
+                    >
                       <FaGamepad className="text-sm md:text-base" /> Play Now
                     </button>
                   </div>

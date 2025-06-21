@@ -226,6 +226,64 @@
     pointer-events: auto !important;
   }
   
+  /* Force white text in specific sections regardless of theme */
+  .text-light-text {
+    @apply text-gray-300;
+  }
+  
+  .light .text-light-text {
+    @apply text-white !important;
+  }
+  
+  .text-muted {
+    @apply text-gray-400;
+  }
+  
+  .light .text-muted {
+    @apply text-white !important;
+  }
+  
+  /* Force white text for section headers in light mode */
+  .light .keep-white h2,
+  .light .keep-white h3,
+  .light .keep-white h4 {
+    @apply text-white !important;
+  }
+  
+  /* Force white text for paragraphs and spans in light mode */
+  .light .keep-white p,
+  .light .keep-white span,
+  .light .keep-white li {
+    @apply text-white !important;
+  }
+  
+  /* Force white text for specific elements */
+  .light .keep-white .contact-info {
+    @apply text-white !important;
+  }
+  
+  /* Force white text for email links */
+  .light .keep-white a {
+    @apply text-white !important;
+  }
+  
+  .light .keep-white a:hover {
+    @apply text-primary !important;
+  }
+  
+  /* Force white text for all elements within cards */
+  .light .keep-white .dark-card {
+    @apply text-white !important;
+  }
+  
+  .light .keep-white .dark-card h3,
+  .light .keep-white .dark-card h4,
+  .light .keep-white .dark-card p,
+  .light .keep-white .dark-card span,
+  .light .keep-white .dark-card li {
+    @apply text-white !important;
+  }
+  
   /* Hide scrollbar for Chrome, Safari and Opera */
   *::-webkit-scrollbar {
     display: none;

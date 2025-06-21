@@ -34,7 +34,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16 dark-section">
+    <section id="projects" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 xl:px-16 dark-section keep-white">
       <div className="container max-w-6xl mx-auto">
         <motion.div 
           className="mb-8 md:mb-12"
