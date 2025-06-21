@@ -32,9 +32,9 @@ const games: Game[] = [
     id: 3,
     title: "Maze Runner",
     description: "Move through maze, collect keys and find the exit. Avoid enemies and try to reach the goal as quickly as possible!",
-    image: "/maze-runner.jpg",
+    image: "/maze-runner.png",
     url: "https://maze-runner-naman-vashi.vercel.app/",
-    technologies: ["Javascript", "HTML", "CSS", "Canvas API"]
+    technologies: ["Vanilla JavaScript", "CSS", "Canvas API"]
   }
   // Add more games here in the future
 ];

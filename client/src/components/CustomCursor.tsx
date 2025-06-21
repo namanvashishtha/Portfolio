@@ -4,6 +4,7 @@ const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     // Check if device is mobile/touch device
@@ -13,8 +14,22 @@ const CustomCursor = () => {
       setIsMobile(isTouchDevice || isMobileScreen);
     };
 
+    // Check theme
+    const checkTheme = () => {
+      const isLightMode = document.documentElement.classList.contains('light');
+      setIsDark(!isLightMode);
+    };
+
     checkMobile();
+    checkTheme();
     window.addEventListener('resize', checkMobile);
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
 
     const updateCursorPosition = (e: MouseEvent) => {
       if (!isMobile) {
@@ -47,6 +62,7 @@ const CustomCursor = () => {
       window.removeEventListener("mousemove", updateCursorPosition);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener('resize', checkMobile);
+      observer.disconnect();
     };
   }, [isMobile]);
 
@@ -57,7 +73,7 @@ const CustomCursor = () => {
 
   return (
     <div
-      className={`custom-cursor ${isHovering ? "link-hovered" : ""}`}
+      className={`custom-cursor ${isHovering ? "link-hovered" : ""} ${isDark ? "" : "light-cursor"}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
