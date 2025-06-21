@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaCalendar, FaTag, FaUser, FaExternalLinkAlt } from "react-icons/fa";
+import { FaCalendar, FaTag, FaUser, FaExternalLinkAlt, FaSync } from "react-icons/fa";
 import axios from "axios";
 
 interface BlogPost {
@@ -15,56 +15,44 @@ interface BlogPost {
   link?: string;
 }
 
-interface MediumRssItem {
-  title: string;
-  pubDate: string;
-  link: string;
-  guid: string;
-  author: string;
-  thumbnail: string;
-  description: string;
-  content: string;
-  enclosure: {
-    url: string;
-  };
-  categories: string[];
-}
-
 const LOCAL_STORAGE_KEY = "my_blog_posts";
 const MEDIUM_CACHE_KEY = "medium_blog_posts";
 const CACHE_EXPIRY = 60 * 60 * 1000; // 1 hour in milliseconds
 
-// Fallback posts in case the Medium API fails
+// Real Medium posts as fallback with actual links
 const fallbackPosts: BlogPost[] = [
   {
     id: 1,
-    title: "Getting Started with LoRaWAN for IoT Applications",
-    excerpt: "An introduction to LoRaWAN technology and how it enables long-range, low-power IoT communication.",
-    content: "LoRaWAN (Long Range Wide Area Network) is a protocol designed for low-power, wide-area networking. It's perfect for IoT devices that need to transmit small amounts of data over long distances while conserving battery power. In this post, we'll explore the fundamentals of LoRaWAN architecture and how to set up your first LoRaWAN device...",
-    date: "April 15, 2025",
+    title: "JAMstack and Beyond: A Developer's Journey Through Modern Web Architecture",
+    excerpt: "Exploring the JAMStack and its impact on modern web development, covering performance, scalability, and future trends in web architecture.",
+    content: "JAMstack is revolutionizing modern web development by prioritizing speed, security, and scalability. This architecture—built on JavaScript, APIs, and Markup—decouples the frontend from the backend, enabling developers to create fast, static sites that dynamically pull data via APIs.",
+    date: "June 21, 2025",
     author: "Naman Vashishtha",
-    category: "IoT",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    category: "Web Development",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    link: "https://medium.com/@unclejiyo/jamstack-and-beyond-a-developers-journey-through-modern-web-architecture-60fb3a5c74fc"
   },
   {
     id: 2,
-    title: "Advanced Java Techniques for Enterprise Applications",
-    excerpt: "Exploring design patterns and architectural approaches for scalable Java applications.",
-    content: "Enterprise-grade Java applications require thoughtful architecture to ensure maintainability and scalability. This post explores essential design patterns like Dependency Injection, Factory Method, and Observer pattern, along with architectural considerations for microservices deployment...",
-    date: "March 22, 2025",
+    title: "PySpark and Partitioning: Accelerating Big Data Processing",
+    excerpt: "Learn how to optimize PySpark performance through effective partitioning strategies for big data applications and distributed computing.",
+    content: "PySpark partitioning is crucial for optimizing big data processing performance. This comprehensive guide covers partitioning strategies, performance tuning, and best practices for handling large datasets efficiently in Apache Spark environments.",
+    date: "May 23, 2025",
     author: "Naman Vashishtha",
-    category: "Java",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    category: "Big Data",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    link: "https://medium.com/@unclejiyo/pyspark-and-partitioning-accelerating-big-data-processing-3e34dbcfb4ef"
   },
   {
     id: 3,
-    title: "New Trends in Web Development: JAMstack and Beyond",
-    excerpt: "Exploring the JAMStack and its impact on modern web development.",
-    content: "JAMstack is revolutionizing modern web development by prioritizing speed, security, and scalability. This architecture—built on JavaScript, APIs, and Markup—decouples the frontend from the backend, enabling developers to create fast, static sites that dynamically pull data via APIs. With tools like Next.js and Gatsby, JAMstack simplifies workflows while leveraging CDNs for global performance. Beyond JAMstack, trends like serverless computing and AI-driven development are emerging, allowing for more efficient scaling and personalized user experiences. As web development evolves, embracing these innovations ensures developers can build robust, future-proof applications that meet growing user demands.",
-    date: "May 12, 2025",
-    author: "Naman Vashishtha",
-    category: "Web Development",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    title: "MongoDB vs. PostgreSQL: Flexibility Meets Reliability in Full-Stack Development",
+    excerpt: "A comprehensive comparison of MongoDB and PostgreSQL for full-stack development projects, covering performance, scalability, and use cases.",
+    content: "Choosing between MongoDB and PostgreSQL is a critical decision in full-stack development. This article explores the strengths and weaknesses of both databases, covering performance, scalability, ACID compliance, and use cases.",
+    date: "May 14, 2025",
+    author: "Naman Vashishtha", 
+    category: "Database",
+    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    link: "https://medium.com/@unclejiyo/mongodb-vs-postgresql-flexibility-meets-reliability-in-full-stack-development-fd1c9a0a6bff"
   }
 ];
 
@@ -90,25 +78,7 @@ const Blog = () => {
     return tempDiv.textContent || tempDiv.innerText || '';
   };
 
-  // Function to get a suitable image from the post
-  const getPostImage = (item: MediumRssItem): string => {
-    // Try to get image from enclosure
-    if (item.enclosure && item.enclosure.url) {
-      return item.enclosure.url;
-    }
-    
-    // Try to get first image from content
-    const imgRegex = /<img[^>]+src="([^">]+)"/g;
-    const match = imgRegex.exec(item.content);
-    if (match && match[1]) {
-      return match[1];
-    }
-    
-    // Default image if none found
-    return "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80";
-  };
-
-  // Function to fetch Medium posts
+  // Function to fetch Medium posts using AllOrigins proxy
   const fetchMediumPosts = async () => {
     setLoading(true);
     setError(null);
@@ -128,49 +98,67 @@ const Blog = () => {
         }
       }
       
-      // Use a CORS proxy to fetch the RSS feed
+      console.log("Fetching Medium posts via AllOrigins proxy...");
+      
+      // Use AllOrigins proxy to fetch RSS feed directly (no API key needed!)
       const response = await axios.get(
-        'https://api.rss2json.com/v1/api.json',
+        `https://api.allorigins.win/get?url=${encodeURIComponent('https://medium.com/@unclejiyo/feed')}`,
         {
-          params: {
-            rss_url: 'https://medium.com/@unclejiyo/feed',
-            api_key: 'ykxoqnpwmgn8gsjybfeilroqmvhlwsyrhsdwvjfk',
-            count: 10
-          },
           headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Accept': 'application/json'
           }
         }
       );
       
-      if (response.data && response.data.items) {
-        const mediumPosts: BlogPost[] = response.data.items.map((item: MediumRssItem, index: number) => {
-          // Extract a clean excerpt from the description
-          const excerpt = extractTextFromHtml(item.description).substring(0, 150) + '...';
+      if (response.data && response.data.contents) {
+        // Parse the RSS XML manually
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(response.data.contents, 'text/xml');
+        const items = xmlDoc.querySelectorAll('item');
+        
+        if (items.length === 0) {
+          throw new Error("No blog posts found in RSS feed");
+        }
+        
+        const mediumPosts: BlogPost[] = Array.from(items).slice(0, 10).map((item, index) => {
+          const title = item.querySelector('title')?.textContent || 'Untitled';
+          const link = item.querySelector('link')?.textContent || '';
+          const pubDate = item.querySelector('pubDate')?.textContent || '';
+          const description = item.querySelector('description')?.textContent || '';
+          const content = item.querySelector('content\\:encoded')?.textContent || description;
           
-          // Format the date
-          const pubDate = new Date(item.pubDate);
-          const formattedDate = pubDate.toLocaleDateString('en-US', { 
+          // Extract excerpt from description  
+          const excerpt = extractTextFromHtml(description).substring(0, 150) + '...';
+          
+          // Format date
+          const formattedDate = pubDate ? new Date(pubDate).toLocaleDateString('en-US', { 
             month: 'long', 
             day: 'numeric', 
             year: 'numeric' 
-          });
+          }) : 'Unknown date';
+          
+          // Try to extract image from content
+          let image = "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1172&q=80";
+          const imgRegex = /<img[^>]+src="([^">]+)"/g;
+          const match = imgRegex.exec(content || description);
+          if (match && match[1]) {
+            image = match[1];
+          }
           
           return {
             id: index + 1,
-            title: item.title,
-            excerpt: excerpt,
-            content: item.content,
+            title,
+            excerpt,
+            content: content || description,
             date: formattedDate,
-            author: item.author || "Naman Vashishtha",
-            category: item.categories && item.categories.length > 0 ? item.categories[0] : "Technology",
-            image: getPostImage(item),
-            link: item.link
+            author: "Naman Vashishtha",
+            category: "Technology",
+            image,
+            link
           };
         });
         
-        // Cache the data with timestamp
+        // Cache the data
         localStorage.setItem(
           MEDIUM_CACHE_KEY, 
           JSON.stringify({
@@ -180,24 +168,17 @@ const Blog = () => {
         );
         
         setPosts(mediumPosts);
+        console.log(`✅ Successfully loaded ${mediumPosts.length} Medium posts`);
+        
       } else {
-        throw new Error("No posts found");
+        throw new Error("Failed to fetch RSS content");
       }
+      
     } catch (err) {
-      console.error("Error fetching Medium posts:", err);
-      
-      // More detailed error logging
-      if (axios.isAxiosError(err)) {
-        console.error("Axios error details:", {
-          status: err.response?.status,
-          statusText: err.response?.statusText,
-          data: err.response?.data,
-          message: err.message
-        });
-      }
-      
-      setError("Failed to load blog posts from Medium. Using fallback posts instead.");
+      console.error("❌ Error fetching Medium posts:", err);
+      setError("Failed to load blog posts from Medium. Showing latest posts instead.");
       setPosts(fallbackPosts);
+      console.log("Using fallback posts with real Medium links");
     } finally {
       setLoading(false);
     }
@@ -236,6 +217,8 @@ const Blog = () => {
   
   // Function to refresh posts from Medium
   const refreshPosts = () => {
+    // Clear cache and fetch fresh data
+    localStorage.removeItem(MEDIUM_CACHE_KEY);
     fetchMediumPosts();
   };
 
@@ -253,7 +236,7 @@ const Blog = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-2">Blog</h2>
             <div className="h-1 w-16 md:w-20 bg-primary rounded"></div>
             {error && (
-              <p className="text-red-500 mt-2 text-xs sm:text-sm">{error}</p>
+              <p className="text-yellow-500 mt-2 text-xs sm:text-sm">{error}</p>
             )}
           </div>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
@@ -262,7 +245,8 @@ const Blog = () => {
               className="px-3 sm:px-4 py-2 border border-border text-foreground rounded-md hover:bg-background transition-all flex items-center justify-center gap-2 text-sm sm:text-base min-h-[44px] touch-manipulation"
               disabled={loading}
             >
-              {loading ? 'Loading...' : 'Refresh Medium Posts'}
+              <FaSync className={loading ? 'animate-spin' : ''} />
+              {loading ? 'Loading...' : 'Refresh Posts'}
             </button>
             <button 
               onClick={() => setIsWriting(true)}
