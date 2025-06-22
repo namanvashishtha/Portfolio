@@ -184,19 +184,11 @@ const Playground = () => {
             {games.map((game, index) => (
               <motion.div
                 key={game.id}
-                className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group touch-manipulation active:scale-95"
+                className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleGameClick(game);
-                }}
-                onTouchEnd={(e) => {
-                  e.preventDefault();
-                  handleGameClick(game);
-                }}
               >
                 <div className="h-40 md:h-48 overflow-hidden relative">
                   <img
@@ -206,18 +198,20 @@ const Playground = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <button 
-                      className="px-4 py-2 bg-primary text-white rounded-md flex items-center gap-2 text-sm md:text-base min-h-[44px] touch-manipulation"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleGameClick(game);
-                      }}
+                      className="px-4 py-2 bg-primary text-white rounded-md flex items-center gap-2 text-sm md:text-base min-h-[44px] touch-manipulation hover:bg-primary/90 transition-colors"
+                      onClick={() => handleGameClick(game)}
                     >
-                      <FaGamepad className="text-sm md:text-base" /> Play Now
+                      <FaGamepad className="text-sm md:text-base" /> Play Game
                     </button>
                   </div>
-                  {/* Mobile tap indicator */}
-                  <div className="md:hidden absolute top-2 right-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
-                    Tap to play
+                  {/* Mobile play button - always visible on mobile */}
+                  <div className="md:hidden absolute top-2 right-2">
+                    <button 
+                      className="bg-primary text-white px-3 py-2 rounded-md flex items-center gap-1 text-xs min-h-[44px] touch-manipulation hover:bg-primary/90 transition-colors"
+                      onClick={() => handleGameClick(game)}
+                    >
+                      <FaGamepad className="text-xs" /> Play
+                    </button>
                   </div>
                 </div>
                 <div className="p-4 md:p-6">
